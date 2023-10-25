@@ -1,0 +1,3 @@
+﻿ID,title,description,img_path,base_value,functions
+0,Sword Slash,Deal {0} slashing damage to chosen target.,,5,attack
+1,Magic Missile,Deal {0} magic damage to chosen target.,,5,attack
