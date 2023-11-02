@@ -1,3 +1,45 @@
 ﻿ID,title,description,img_path,base_value,functions
 0,Sword Slash,Deal {0} slashing damage to chosen target.,,5,attack
-1,Magic Missile,Deal {0} magic damage to chosen target.,,5,attack
+1,Impale,Deal {0} piercing damage to chosen target.,,5,attack
+2,Parry,Blocks {0} damage.,,5,defend
+3,Sever,Deal {0} slashing damage to chosen target.,,10,attack
+4,Wreck,"Deal {0} slashing damage to chosen target, become vulnerable next turn.",,12,"attack, debuff"
+5,Shield Bash,"Block {0} damage, deals {0} slashing damage to chosen target.",,5,"attack, defend"
+6,Fortify,Blocks {0} damage.,,10,defend
+7,Pierce,Deal {0} piercing damage to chosen target.,,5,attack
+8,Dagger Toss,Deal {0} piercing damage to chosen target.,,5,attack
+9,Dodge,Blocks {0} damage.,,5,defend
+10,Headshot,Deal {0} piercing damage to chosen target.,,10,attack
+11,Ankle Grazer,Deal {0} piercing damage and weakens the chosen target.,,4,"attack, debuff"
+12,Poisoned Arrow,"Deal {0} piercing damage immediately, and applies 3 poison.",,5,"attack, poison"
+13,Magic Missile,Deal {0} magic damage to chosen target.,,5,attack
+14,Reflect,Blocks {0} damage.,,5,defend
+15,Fireball,Deal {0} magic damage to target and 3 magic damage to adjacent enemies.,,7,attack
+16,Shield Wall,Blocks {0} damage from each attack from the enemies next turn.,,3,defend
+17,Poison,Applies {0} poison to chosen target.,,3,"attack, poison"
+18,Magic Splash,Deal {0} magic damage to chosen target.,,4,attack
+19,Smite,"Deal {0} slashing damage on chosen target, the target becomes vulnerable.",,4,"attack, debuff"
+20,Ward,Blocks {0} damage.,,5,defend
+21,Target Heal,Heals chosen ally {0} health points.,,8,heal
+22,Exhaust,Weakens the chosen target for {0} turns.,,2,debuff
+23,Empower,Strengthens a chosen ally for {0} turns.,,2,buff
+24,Ravage,Deal {0} slashing damage to chosen target.,,15,attack
+25,Reinforce,"Blocks {0} damage, block isn't lost at the end of the turn.",,15,defend
+26,Multishot,Deal {0} piercing damage to chosen target.,,15,attack
+27,Shatter,Deal {0} piercing damage to chosen target. Stuns the target.,,5,"attack, debuff"
+28,Lunar Missile,Deal {0} magic damage to chosen enemy,,15,attack
+29,Eruption,Deal {0} magic damage to target and 5 magic damage to adjacent enemies.,,15,attack
+30,Magic Wave,Deal {0} magic damage to chosen target.,,10,attack
+31,Group Heal,Heals all allies {0} health each.,,6,heal
+32,Last Stand,"Blocks {0} damage, become vulnerable for 2 turns.",,18,"defend, debuff"
+33,Rusty Blade,"Deal {0} slashing damage to target, the target becomes weakened for 1 turn.",,5,"attack, debuff"
+34,Dual Wield,Deal {0} slashing damage to chosen target.,,10,attack
+35,Dagger Lunge,"Block {0} damage, deals {0} piercing damage to chosen target.",,5,"attack, defend"
+36,Flaming Arrow,"Deal {0} piercing damage to chosen target, and 2 damage to adjacent enemies.",,5,attack
+37,Shatter,"Deal {0} piercing damage, become vulnerable next turn.",,18,"attack, debuff"
+38,Dark Truth,Weakens the chosen target and adjacent enemies for {0} turn(s).,,1,debuff
+39,Poison Spray,Applies {0} poison to chosen target and adjacent enemies.,,1,poison
+40,Life Leech,Heal for {0} health and deal {0} magic damage to chosen target.,,5,"attack, heal"
+41,Paranoia,The chosen target becomes vulnerable and weakened for {0} turn(s).,,1,debuff
+42,Saviour,Heals a chosen ally {0} health.,,15,heal
+43,Chosen's Light,Deal {0} magic damage to chosen target.,,8,attack
