@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
 
     [SerializeField]
-    private int speed = 10;
+    private int speed = 15;
     [SerializeField]
     private int rotSpeed = 180;
     [SerializeField]
@@ -18,17 +18,24 @@ public class CameraController : MonoBehaviour
     private Vector3 rotVelocity = Vector3.zero;
     private Vector3 internalRotVelocity = Vector3.zero;
 
+    private float minFOV = 15f;
+    private float maxFOV = 90f;
+    private float sens = 10f;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        height();
         parseMovement();
         parseRotation();
+        parseZoom();
 
     }
     
@@ -63,4 +70,20 @@ public class CameraController : MonoBehaviour
         transform.rotation *= Quaternion.Euler(rotVelocity* rotSpeed * Time.deltaTime);
         
     }
+
+    void parseZoom(){
+        float FOV = Camera.main.fieldOfView;
+        FOV += Input.GetAxis("Mouse ScrollWheel") * sens;
+        FOV = Mathf.Clamp(FOV, minFOV, maxFOV);
+        Camera.main.fieldOfView = FOV;
+    }
+
+    void height(){
+        Vector3 cameraPosition = transform.position;
+        float ground = Terrain.activeTerrain.SampleHeight(cameraPosition);
+        cameraPosition.y = Mathf.Lerp(cameraPosition.y,  ground + 50, Time.deltaTime * 10);
+        transform.position = cameraPosition;
+    }
+
+
 }
