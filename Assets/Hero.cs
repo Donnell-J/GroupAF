@@ -80,7 +80,11 @@ public class Hero : MonoBehaviour, IcombatFunction
     }
     public void resolveStatuses(){
         if(statuses.ContainsKey("poison")){
-            getHit(statuses["poison"]);
+            getHit(statuses["poison"],true);
+        }
+        if(!statuses.ContainsKey("barricade")){
+            shield = 0;
+            hpBar.setShield(0);
         }
     }
     public void reduceStatuses(){
@@ -100,12 +104,16 @@ public class Hero : MonoBehaviour, IcombatFunction
         currentHP = Mathf.Clamp(currentHP+amount,0,maxHP);
         hpBar.setHealth(currentHP);
     }
-    public void getHit(int amount){
-        shield -= (statuses.ContainsKey("vulnerable")) ? amount*2 : amount;
-        if(shield < 0){
-            currentHP +=shield;
-            shield = 0;
-            hpBar.setShield(0);
+   public void getHit(int amount, bool ignoreShield){
+        if(ignoreShield){
+            currentHP -= amount;
+        }else{
+            shield -= (statuses.ContainsKey("vulnerable")) ? amount*2 : amount;
+            if(shield < 0){
+                currentHP +=shield;
+                shield = 0;
+                hpBar.setShield(0);
+            }
         }
         if(currentHP <= 0){
             currentHP=0;
@@ -121,5 +129,6 @@ public class Hero : MonoBehaviour, IcombatFunction
     public void die(){
         BattleController.party.Remove(this);
         transform.eulerAngles = new Vector3(0,0,90); 
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 }

@@ -21,7 +21,7 @@
 ,,,,,,
 200,Magic Missile,Deal {0} magic damage to chosen target.,,5,enemy,getHit
 201,Reflect,Blocks {0} damage.,,5,self,defend
-202,Fireball,Deal {0} magic damage to target and {1} magic damage to adjacent enemies.,,7.3,enemy.enemyAdjacent,getHit.getHIt
+202,Fireball,Deal {0} magic damage to target and {1} magic damage to adjacent enemies.,,7.3,enemy.enemyAdjacent,getHit.getHit
 203,Shield Wall,Blocks {0} damage for all Allies.,,3,team,defend
 204,Poison,Applies {0} poison to chosen target.,,3.poison,enemy,applyStatus
 205,Dark Truth,Weakens the chosen target and adjacent enemies for {0} turn(s).,,2.weakened,enemy.enemyAdjacent,applyStatus

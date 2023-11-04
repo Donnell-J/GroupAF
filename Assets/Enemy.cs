@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
 
     public int shield = 0;
     public Dictionary<string,int> statuses = new Dictionary<string, int>();
+    public bool isDead;
     private string[] canApply = new string[]{"weakened","vulnerable"};
     int intent;
     int targetInd;
@@ -54,7 +55,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
         if(intent == 0){
             int dmg = statuses.ContainsKey("weakened")? int.Parse(intentValue)/2 : int.Parse(intentValue);
             dmg = statuses.ContainsKey("weakened")? dmg*2 : dmg;
-            BattleController.party[targetInd].getHit(statuses.ContainsKey("weakened")? int.Parse(intentValue)/2 : int.Parse(intentValue));
+            BattleController.party[targetInd].getHit(statuses.ContainsKey("weakened")? int.Parse(intentValue)/2 : int.Parse(intentValue),false);
         }else if(intent == 1){
             defend(int.Parse(intentValue));
         }else if(intent == 2){
@@ -92,19 +93,27 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     }
     public void resolveStatuses(){
         if(statuses.ContainsKey("poison")){
-            getHit(statuses["poison"]);
+            getHit(statuses["poison"],true);
+        }
+        if(!statuses.ContainsKey("barricade")){
+            shield = 0;
+            hpBar.setShield(0);
         }
     }
     public void heal(int amount){
         currentHP = Mathf.Clamp(currentHP+amount,0,maxHP);
         hpBar.setHealth(currentHP);
     }
-    public void getHit(int amount){
-        shield -= (statuses.ContainsKey("vulnerable")) ? amount*2 : amount;
-        if(shield < 0){
-            currentHP +=shield;
-            shield = 0;
-            hpBar.setShield(0);
+    public void getHit(int amount, bool ignoreShield){
+        if(ignoreShield){
+            currentHP -= amount;
+        }else{
+            shield -= (statuses.ContainsKey("vulnerable")) ? amount*2 : amount;
+            if(shield < 0){
+                currentHP +=shield;
+                shield = 0;
+                hpBar.setShield(0);
+        }
         }
         if(currentHP <= 0){
             currentHP=0;
@@ -119,7 +128,9 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     }
     public void die(){
         BattleController.enemies.Remove(this);
-        transform.eulerAngles = new Vector3(0,0,90); 
+        transform.eulerAngles = new Vector3(0,0,90);
+        transform.GetChild(0).gameObject.SetActive(false);
+        isDead = true;
     }
 }
 

@@ -72,14 +72,11 @@ public class Card : MonoBehaviour {
         if(Physics.Raycast(ray, out hit, 100)){
 
             if(targets[0]=="self" & hit.collider.transform == BattleController.party[BattleController.turnIndex].transform){
-                Debug.Log("Target self");
-                Debug.Log(BattleController.party[BattleController.turnIndex]);
                 startCardExecution(BattleController.party[BattleController.turnIndex] as IcombatFunction);
             }else if((targets[0] == "ally" | targets[0] == "team" )& hit.collider.TryGetComponent<Hero>(out mainHeroTarget)){
-                Debug.Log("Target Ally");
-                startCardExecution(mainHeroTarget as IcombatFunction);
+                Debug.Log(mainHeroTarget);
+                startCardExecution(mainHeroTarget);
             }else if(targets[0]=="enemy" & hit.collider.TryGetComponent<Enemy>(out mainEnemyTarget)){
-                Debug.Log("Attacking Enemy");
                 startCardExecution(mainEnemyTarget as IcombatFunction);
             }
             
@@ -94,34 +91,31 @@ public class Card : MonoBehaviour {
                     allTargets.Add(hero);
                 }
             }else if(targets[i] == "enemyAdjacent"){
-                Debug.Log("Running function on adjacents");
                 int mainTargetPos = BattleController.enemies.IndexOf((Enemy)mainTarget);
                 Debug.Log(mainTargetPos);
                 if(mainTargetPos > 0){
-                    allTargets.Add(BattleController.enemies[mainTargetPos-1].GetComponent<Enemy>() as IcombatFunction);
-                }if (mainTargetPos <3){
-                    allTargets.Add(BattleController.enemies[mainTargetPos+1].GetComponent<Enemy>() as IcombatFunction);
+                    allTargets.Add(BattleController.enemies[mainTargetPos-1] as IcombatFunction);
+                }if (mainTargetPos <BattleController.enemies.Count){
+                    allTargets.Add(BattleController.enemies[mainTargetPos+1] as IcombatFunction);
                 }
             }else if(targets[i]=="self"){
                 allTargets.Add(BattleController.party[BattleController.turnIndex]);
-            }else if(targets[i] == "enemy" | targets[i] =="ally"){
+            }else if(targets[i] == "enemy"){
                 allTargets.Add(mainEnemyTarget);
+            }else if(targets[i] == "ally"){
+                allTargets.Add(mainHeroTarget);
             }
             string func = this.functions[i];
-            //Debug.Log(func);
-            //Debug.Log(func.Contains("getHit"));
             if(func.Contains("getHit")){
                 foreach(IcombatFunction tgt in allTargets){
-                    Debug.Log(tgt);
                     int calcDmg = Convert.ToInt32(this.base_values[valIndex]);
-                    Debug.Log(calcDmg);
                     if (BattleController.party[BattleController.turnIndex].statuses.ContainsKey("weakened")){
                         calcDmg /=2;
                     }
                     if (BattleController.party[BattleController.turnIndex].statuses.ContainsKey("strengthen")){
                         calcDmg *=2;
                     }
-                        tgt.getHit(calcDmg);
+                        tgt.getHit(calcDmg,false);
                 }
                 valIndex++;
             }else if(func.Contains("applyStatus")){

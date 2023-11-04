@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 public class BattleController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -38,7 +39,7 @@ public class BattleController : MonoBehaviour
         while(!finished){
             roundCounter.text = string.Format("Round: {0}",++RoundCount);
             setEnemyIntention();
-            foreach(Hero hero in party){ 
+            foreach(Hero hero in party.ToList()){ 
                 hero.toggleActive();
                 hero.resolveStatuses();
                 hero.reduceStatuses();
@@ -59,18 +60,26 @@ public class BattleController : MonoBehaviour
                 nextTurn();
             }
             if(!finished){
-                foreach(Enemy enemy in enemies){
+                foreach(Enemy enemy in enemies.ToList()){
                     enemy.resolveStatuses();
-                    enemy.takeTurn();
-                    enemy.reduceStatuses();
-                    if(party.Count ==0){
-                        finished = true;
-                        break;
+                    if(!enemy.isDead){
+                        enemy.takeTurn();
+                        enemy.reduceStatuses();
+                        if(party.Count ==0){
+                            finished = true;
+                            break;
+                        }
                     }
                 }
             }
         }
         //CombatOver here;
+        if(enemies.Count ==0){
+            Debug.Log("Combat won");
+            //func for Rewards
+        }else{
+            Debug.Log("Game over");
+        }
     }
     void nextTurn(){
         turnIndex = (turnIndex + 1) % partySize;
