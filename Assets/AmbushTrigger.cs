@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class ambushTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject AmbushText;
+
+    private void Start()
     {
-        
+        AmbushText.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator Wait()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            OnMouseDown();
-        }
+        yield return new WaitForSeconds(2);
+        AmbushText.SetActive(false);
+        SceneManager.LoadScene("testSwitch");
     }
 
     void OnMouseDown(){
-        SceneManager.LoadScene("testSwitch");
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("AmbushText");
+            AmbushText.SetActive(true);
+            StartCoroutine(Wait());
+        }
     }
 }
