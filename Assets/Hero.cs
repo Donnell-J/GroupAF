@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Hero : MonoBehaviour, IcombatFunction
 {
     // Start is called before the first frame update
@@ -17,12 +17,13 @@ public class Hero : MonoBehaviour, IcombatFunction
     private int heroID; //0 = Melee Hero, 1= RangeHero, 2=AOE Hero, 3=SuppHero
     [SerializeField]
     public new string name;
-    private List<int> currentDeck;
-    private List<int> hand = new List<int>();
-    private List<int> discardPile = new List<int>();
+    public List<int> currentDeck;
+    public List<int> hand = new List<int>();
+    public List<int> discardPile = new List<int>();
     
     public Dictionary<string,int> statuses = new Dictionary<string, int>();
     private int shield = 0;
+    public GameObject currentArrow; 
        
     void Awake(){
         List<int> d = cardDB.instance.heroDecks[heroID];
@@ -31,6 +32,7 @@ public class Hero : MonoBehaviour, IcombatFunction
         currentHP= maxHP;
         hpBar.setMax(maxHP);
         shuffleDeck();
+        currentArrow.SetActive(false);
 
     }
     void Start(){
@@ -40,6 +42,9 @@ public class Hero : MonoBehaviour, IcombatFunction
     {
         
     }
+    public void toggleActive(){
+        currentArrow.SetActive(!currentArrow.activeSelf);
+    }
     public int draw(){
         int drawnID =this.currentDeck[0];
         this.hand.Add(drawnID);
@@ -47,6 +52,7 @@ public class Hero : MonoBehaviour, IcombatFunction
         return drawnID;
     }
     public void discard(int id){
+        this.hand.Remove(id);
         this.discardPile.Add(id);
     }
 
@@ -72,8 +78,14 @@ public class Hero : MonoBehaviour, IcombatFunction
             s.updateCount(amount);
         }
     }
+    public void resolveStatuses(){
+        if(statuses.ContainsKey("poison")){
+            getHit(statuses["poison"]);
+        }
+    }
     public void reduceStatuses(){
-        foreach(string key in statuses.Keys){
+        List<string> keys = new List<string>(statuses.Keys);
+        foreach(string key in keys){
             statuses[key] -=1;
             if(statuses[key] ==0){
                 statuses.Remove(key);
@@ -95,11 +107,19 @@ public class Hero : MonoBehaviour, IcombatFunction
             shield = 0;
             hpBar.setShield(0);
         }
+        if(currentHP <= 0){
+            currentHP=0;
+            die();
+        }
         hpBar.setHealth(currentHP);
     }
 
     public void defend(int amount){
         shield += amount;
         hpBar.setShield(shield);
+    }
+    public void die(){
+        BattleController.party.Remove(this);
+        transform.eulerAngles = new Vector3(0,0,90); 
     }
 }

@@ -31,8 +31,7 @@ public class Card : MonoBehaviour {
     //For Bezier function;
     Canvas canvas;
     
-    void Start()
-    {
+    void Start(){
         canvas = transform.parent.parent.GetComponent<Canvas>();
         h = canvas.GetComponent<RectTransform>().rect.height;
         //id, title, description, img_path, base_value, functions
@@ -85,6 +84,7 @@ public class Card : MonoBehaviour {
             }
             
         }
+    }
     void startCardExecution(IcombatFunction mainTarget){
         int valIndex =0;
         for(int i = 0; i < functions.Count;i++){
@@ -142,10 +142,13 @@ public class Card : MonoBehaviour {
             }
         }
         BattleController.party[BattleController.turnIndex].discard(this.ID);
-        Destroy(gameObject);
-        Destroy(this);
+        BattleController.turnInProgress = true;
+        destroy();
     }
 
+    public void destroy(){
+        Destroy(gameObject);
+        Destroy(this);
     }
     public void beginTargetting(){
         
@@ -166,7 +169,6 @@ public class Card : MonoBehaviour {
         Vector3 orig = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 p2 = new Vector2((mouseLoc.x-orig.x),mouseLoc.y-orig.y);
         p2 = p2/(scale);
-        p2.x*= -1;
         Vector2 p1 = new Vector2(0,h/2);
         float t = 0f;
         Vector3 position;

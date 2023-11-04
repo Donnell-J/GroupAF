@@ -1,33 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class BattleController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
     public GameObject[] heroPrefabs;
     public GameObject enemyPrefab;
+    [SerializeField]
+    public Transform handUI;
     public int partySize;
     public GameObject cardDefault;
     public static List<Hero> party;
-    public static int turnIndex =0;
+    public static int turnIndex;
 
     public static List<Enemy> enemies;
     public int enemyCount;
+    public static bool turnInProgress = false;
+    public TMP_Text roundCounter;
+
+    public GameObject deckButton;
+    public GameObject discardButton;
     void Start()
     {   
         randomizeTurnOrder();
         party = new List<Hero>();
         enemies = new List<Enemy>();
         populateSides();
-        setEnemyIntention();
-        for(int i = 0; i <5; i++){
-            drawCard();
+        StartCoroutine(Combat());
+       
+    }
+    IEnumerator Combat(){
+        int RoundCount=0;
+        bool finished = false;
+        while(!finished){
+            roundCounter.text = string.Format("Round: {0}",++RoundCount);
+            setEnemyIntention();
+            foreach(Hero hero in party){ 
+                hero.toggleActive();
+                hero.resolveStatuses();
+                hero.reduceStatuses();
+                if(hero.hand.Count == 0){
+                    drawCards();
+                }else{
+                    reloadCards();
+                }
+                deckButton.transform.GetChild(0).GetComponent<TMP_Text>().text = string.Format("Deck: {0}",hero.currentDeck.Count);
+                discardButton.transform.GetChild(0).GetComponent<TMP_Text>().text = string.Format("Discard: {0}",hero.discardPile.Count);
+                yield return new WaitUntil(() => turnInProgress);
+                turnInProgress = false;
+                if(enemies.Count ==0){
+                    finished = true;
+                    break;
+                }
+                hero.toggleActive();
+                nextTurn();
+            }
+            if(!finished){
+                foreach(Enemy enemy in enemies){
+                    enemy.resolveStatuses();
+                    enemy.takeTurn();
+                    enemy.reduceStatuses();
+                    if(party.Count ==0){
+                        finished = true;
+                        break;
+                    }
+                }
+            }
         }
-        
-        
-
+        //CombatOver here;
+    }
+    void nextTurn(){
+        turnIndex = (turnIndex + 1) % partySize;
+        reloadCards();
     }
     private void populateSides(){
         Vector3 StartPos = new Vector3(-1,1,10);
@@ -68,10 +115,21 @@ public class BattleController : MonoBehaviour
         
     }
 
-    void drawCard(){
-        Card card = Instantiate(cardDefault).GetComponent<Card>();
-        card.transform.SetParent(transform.Find("CardUI/HandArea"),false);
-        card.ID = party[0].draw();
-        
+    void drawCards(){
+        for(int i = 0; i <5; i++){
+            Card card = Instantiate(cardDefault).GetComponent<Card>();
+            card.transform.SetParent(handUI,false);
+            card.ID = party[turnIndex].draw();
+        }
+    }
+    void reloadCards(){
+        for(int i =0; i < handUI.childCount;i++){
+            handUI.GetChild(i).GetComponent<Card>().destroy();
+        }
+        foreach(int id in party[turnIndex].hand){
+            Card card = Instantiate(cardDefault).GetComponent<Card>();
+            card.transform.SetParent(handUI,false);
+            card.ID = id;
+        }
     }
 }

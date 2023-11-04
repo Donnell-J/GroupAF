@@ -6,7 +6,7 @@ public class cardDB : MonoBehaviour {
     
     public static cardDB instance; 
     public Dictionary<int,string[]> db = new Dictionary<int, string[]>();
-
+    public Dictionary<int, string[]> comboDB = new Dictionary<int, string[]>();
 
 
     private int[][] startingDecks = {new int[]{0,0,0,0,1,1,2,2,2,2,2,3,4,5,6},
@@ -40,6 +40,15 @@ public class cardDB : MonoBehaviour {
             string[] record = cardData[i].Split(new char[] {','});
             if (record[0] != ""){
                 db.Add(int.Parse(record[0]),record[1..]);
+            }
+        }
+        TextAsset comboDataAsset = Resources.Load<TextAsset>("comboCards");
+        cardData = dataAsset.text.Split('\n');
+
+        for (int i = 1; i < cardData.Length - 1; i++){
+            string[] record = cardData[i].Split(new char[] {','});
+            if (record[0] != ""){
+                comboDB.Add(int.Parse(record[0]),record[1..]);
             }
         }
 

@@ -32,7 +32,6 @@ public class Enemy : MonoBehaviour, IcombatFunction{
 
     }
     public void setIntention(){
-        Debug.Log("YOWZA");
         int choiceVal = Random.Range(0,100);
         targetInd = Random.Range(0,BattleController.party.Count);
         if(choiceVal <=50){
@@ -51,6 +50,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     }
 
     public void takeTurn(){
+        targetInd = targetInd % BattleController.party.Count;
         if(intent == 0){
             int dmg = statuses.ContainsKey("weakened")? int.Parse(intentValue)/2 : int.Parse(intentValue);
             dmg = statuses.ContainsKey("weakened")? dmg*2 : dmg;
@@ -73,12 +73,13 @@ public class Enemy : MonoBehaviour, IcombatFunction{
             s.statusType = status;
             s.updateCount(amount);
         }
-        if (status == "weakened"){
+        if (status == "weakened" & intent ==0){
             intentText.text = string.Format("Attacking {0} for {1}",BattleController.party[targetInd].name,int.Parse(intentValue)/2);
         }
     }
     public void reduceStatuses(){
-        foreach(string key in statuses.Keys){
+        List<string> keys = new List<string>(statuses.Keys);
+        foreach(string key in keys){
             statuses[key] -=1;
             if(statuses[key] ==0){
                 statuses.Remove(key);
@@ -87,6 +88,11 @@ public class Enemy : MonoBehaviour, IcombatFunction{
         for(int i=0; i<statusBar.transform.childCount; i++){
             StatusCounter s = statusBar.transform.GetChild(i).GetComponent<StatusCounter>();
             s.updateCount(-1);
+        }
+    }
+    public void resolveStatuses(){
+        if(statuses.ContainsKey("poison")){
+            getHit(statuses["poison"]);
         }
     }
     public void heal(int amount){
@@ -100,6 +106,10 @@ public class Enemy : MonoBehaviour, IcombatFunction{
             shield = 0;
             hpBar.setShield(0);
         }
+        if(currentHP <= 0){
+            currentHP=0;
+            die();
+        }
         hpBar.setHealth(currentHP);
     }
 
@@ -107,6 +117,9 @@ public class Enemy : MonoBehaviour, IcombatFunction{
         shield += amount;
         hpBar.setShield(shield);
     }
-    
+    public void die(){
+        BattleController.enemies.Remove(this);
+        transform.eulerAngles = new Vector3(0,0,90); 
+    }
 }
 
