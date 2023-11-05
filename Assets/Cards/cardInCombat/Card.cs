@@ -32,6 +32,7 @@ public class Card : MonoBehaviour {
     Canvas canvas;
     
     void Start(){
+
         canvas = transform.parent.parent.GetComponent<Canvas>(); //Getting size of the CardUI coanvas so that points are resized correctly for lineRenderer to draw to scale
         h = canvas.GetComponent<RectTransform>().rect.height;
         //record stores data in the format id, title, description, img_path, base_value, functions
@@ -48,12 +49,14 @@ public class Card : MonoBehaviour {
         }
         foreach(string valString in record[4].Split(new char[] {'.'})){
             this.targets.Add(valString);//Provides what objects each function is supposed to effect. The first of these values determines where the card must be dragged to
+
         }
         foreach(string valString in record[5].Split(new char[] {'.'})){
             this.functions.Add(valString);
         }
 
         //Loads text into the card
+
         cardText = GetComponentsInChildren<TMP_Text>();
         cardText[0].text = (this.title);
         cardText[1].text = string.Format(this.description, this.base_values.ToArray());
@@ -64,16 +67,20 @@ public class Card : MonoBehaviour {
     void Update()
     {
         if(isTargetting){
+
             DrawTargetLine(); //If the card is currently targetting recalculate the line renderer points
+
         }
     }
 
     
     void playCard(){
+
         /*
         Creates a raycast from the Mouse's current position into the world. The first element of targets[] determines where the card is supposed to be played.
         If the ray cast collider matches a valid object for the target, then it will start running each of the card's function with collider as the main target.
         */
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(mousePos.action.ReadValue<Vector2>());
         if(Physics.Raycast(ray, out hit, 100)){
@@ -81,6 +88,7 @@ public class Card : MonoBehaviour {
             if(targets[0]=="self" & hit.collider.transform == BattleController.party[BattleController.turnIndex].transform){
                 startCardExecution(BattleController.party[BattleController.turnIndex] as IcombatFunction);
             }else if((targets[0] == "ally" | targets[0] == "team" )& hit.collider.TryGetComponent<Hero>(out mainHeroTarget)){
+
                 startCardExecution(mainHeroTarget);
             }else if(targets[0]=="enemy" & hit.collider.TryGetComponent<Enemy>(out mainEnemyTarget)){
                 startCardExecution(mainEnemyTarget as IcombatFunction);
@@ -89,6 +97,7 @@ public class Card : MonoBehaviour {
         }
     }
     void startCardExecution(IcombatFunction mainTarget){
+
         int valIndex =0; //Current offset in base_values[] we need to start reading from for the current function
         for(int i = 0; i < functions.Count;i++){
             List<IcombatFunction> allTargets = new List<IcombatFunction>(); 
@@ -99,6 +108,7 @@ public class Card : MonoBehaviour {
                 }
             }else if(targets[i] == "enemyAdjacent"){
                 int mainTargetPos = BattleController.enemies.IndexOf((Enemy)mainTarget); //Finds out if there are adjacent allies
+
                 Debug.Log(mainTargetPos);
                 if(mainTargetPos > 0){
                     allTargets.Add(BattleController.enemies[mainTargetPos-1] as IcombatFunction);
@@ -106,15 +116,18 @@ public class Card : MonoBehaviour {
                     allTargets.Add(BattleController.enemies[mainTargetPos+1] as IcombatFunction);
                 }
             }else if(targets[i]=="self"){
+
                 allTargets.Add(BattleController.party[BattleController.turnIndex]);//Targets the hero who's turn it currently is
             }else if(targets[i] == "enemy"){
                 allTargets.Add(mainEnemyTarget);//targets enemy from the raycast earlier
             }else if(targets[i] == "ally"){
                 allTargets.Add(mainHeroTarget);//targets hero from the raycast earlier
+
             }
             string func = this.functions[i];
             if(func.Contains("getHit")){
                 foreach(IcombatFunction tgt in allTargets){
+
                     int calcDmg = Convert.ToInt32(this.base_values[valIndex]); //Vals stored as Object, casts to integer
                     if (BattleController.party[BattleController.turnIndex].statuses.ContainsKey("weakened")){
                         calcDmg /=2; //weakened halves dmg
@@ -125,11 +138,14 @@ public class Card : MonoBehaviour {
                         tgt.getHit(calcDmg,false); //hit the target without bypassing shields
                 }
                 valIndex++;//getHit only uses 1 param so next function starts +1 in 
+
             }else if(func.Contains("applyStatus")){
                 foreach(IcombatFunction tgt in allTargets){
                     tgt.applyStatus(this.base_values[valIndex+1].ToString(),Convert.ToInt32(this.base_values[valIndex]));
                 }
+
                 valIndex +=2;//applyStatus uses 2 params, so increase index by 2
+
             }else if(func.Contains("defend")){
                 foreach(IcombatFunction tgt in allTargets){
                     tgt.defend(Convert.ToInt32(this.base_values[valIndex]));
@@ -142,6 +158,7 @@ public class Card : MonoBehaviour {
                 valIndex ++;
             }
         }
+
         BattleController.party[BattleController.turnIndex].discard(this.ID);//moves card played into discardPile
         BattleController.turnInProgress = true;//ends turn
         destroy();
@@ -152,12 +169,14 @@ public class Card : MonoBehaviour {
         Destroy(this);
     }
     public void beginTargetting(){//When dragging has started, refind the current scale of the UI, and set the LineRenderer to have 30 points 
+
         
         scale = canvas.scaleFactor;
         lineRenderer.positionCount = 30;
         isTargetting = true;
     }
     
+
     public void endTargetting(){ //When dragging has ended, set Linerenderer to have 0 points, so that it is effectively hidden
         lineRenderer.positionCount = 0;
         isTargetting = false;
@@ -176,6 +195,8 @@ public class Card : MonoBehaviour {
         float t = 0f;
         Vector3 position;
         for(int i = 0; i < 30; i++){ //Quadratic Bezier curve function to create a better set of points for the line
+
+   
 			t = i / (30.0f-1.0f);
 			position = ((1.0f - t)*(1.0f - t)) * p0 + 2.0f * (1.0f - t) * t * p1 + t * t * p2;
             
