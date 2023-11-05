@@ -38,7 +38,7 @@
 301,Smite,Deal {0} slashing damage on chosen target] the target becomes vulnerable.,,4.1.vulnerable,enemy.enemy,getHit.applyStatus
 302,Ward,Blocks {0} damage.,,5,self,defend
 303,Target Heal,Heals chosen ally {0} health points.,,8,ally,heal
-304,Exhaust,Weakens the chosen target for {0} turns.,,2,enemy,applyStatus
+304,Exhaust,Weakens the chosen target for {0} turns.,,2.weakened,enemy,applyStatus
 305,Empower,Strengthens a chosen ally for {0} turns.,,2.strengthen,ally,applyStatus
 306,Paranoia,The chosen target becomes vulnerable and weakened for {0} turn(s).,,3.weakened.3.vulnerable,enemy.enemy,applyStatus.applyStatus
 307,Saviour,Heals a chosen ally {0} health.,,15,ally,heal

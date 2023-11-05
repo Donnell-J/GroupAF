@@ -7,12 +7,13 @@ public class Hero : MonoBehaviour, IcombatFunction
     // Start is called before the first frame update
     public StatusCounter statusCounter;
     public HPBar hpBar;
-    public static int[] maxHPs = new int[]{60,60,55,55}; 
+    
     public GameObject statusBar;
     [SerializeField]
     public int maxHP = 60;
     [SerializeField]
     private int currentHP;
+    public bool isDead = false;
     [SerializeField]
     private int heroID; //0 = Melee Hero, 1= RangeHero, 2=AOE Hero, 3=SuppHero
     [SerializeField]
@@ -26,9 +27,9 @@ public class Hero : MonoBehaviour, IcombatFunction
     public GameObject currentArrow; 
        
     void Awake(){
-        List<int> d = cardDB.instance.heroDecks[heroID];
+        List<int> d = cardDB.instance.heroDecks[heroID]; //Get deck from Card DB singleton
         currentDeck = d;
-        maxHP = maxHPs[heroID];
+        maxHP = cardDB.instance.heroMaxHPs[heroID]; ///get maxHP from static variable in cardDB singleton so that it persists between instances
         currentHP= maxHP;
         hpBar.setMax(maxHP);
         shuffleDeck();
@@ -46,6 +47,11 @@ public class Hero : MonoBehaviour, IcombatFunction
         currentArrow.SetActive(!currentArrow.activeSelf);
     }
     public int draw(){
+        if(currentDeck.Count == 0){
+            currentDeck = discardPile;
+            discardPile = new List<int>();
+            shuffleDeck();
+        } 
         int drawnID =this.currentDeck[0];
         this.hand.Add(drawnID);
         this.currentDeck.RemoveAt(0);
@@ -79,15 +85,18 @@ public class Hero : MonoBehaviour, IcombatFunction
         }
     }
     public void resolveStatuses(){
-        if(statuses.ContainsKey("poison")){
+        if(statuses.ContainsKey("poison")){//Poison deals dmg based on the number of stacks
             getHit(statuses["poison"],true);
         }
-        if(!statuses.ContainsKey("barricade")){
+        if(!statuses.ContainsKey("barricade")){//barricade stops shield from being reset
             shield = 0;
             hpBar.setShield(0);
         }
+        if(statuses.ContainsKey("stun")){ //stun skips turn
+            BattleController.turnInProgress = true;
+        }
     }
-    public void reduceStatuses(){
+    public void reduceStatuses(){ //Goes through each status in dictionary and decreases it's amonut by 1, and shows this on status counters. If amount = 0, it removes it from the dictionary
         List<string> keys = new List<string>(statuses.Keys);
         foreach(string key in keys){
             statuses[key] -=1;
@@ -100,15 +109,15 @@ public class Hero : MonoBehaviour, IcombatFunction
             s.updateCount(-1);
         }
     }
-    public void heal(int amount){
+    public void heal(int amount){//increase hp by amount, can't go above max hp
         currentHP = Mathf.Clamp(currentHP+amount,0,maxHP);
         hpBar.setHealth(currentHP);
     }
-   public void getHit(int amount, bool ignoreShield){
+   public void getHit(int amount, bool ignoreShield){//get hit for amount dmg. If the dmg source ignores shields it will deal directly to hp, weithout going through shield
         if(ignoreShield){
             currentHP -= amount;
         }else{
-            shield -= (statuses.ContainsKey("vulnerable")) ? amount*2 : amount;
+            shield -= (statuses.ContainsKey("vulnerable")) ? amount*2 : amount; //vulnerable targets take double dmg
             if(shield < 0){
                 currentHP +=shield;
                 shield = 0;
@@ -130,5 +139,6 @@ public class Hero : MonoBehaviour, IcombatFunction
         BattleController.party.Remove(this);
         transform.eulerAngles = new Vector3(0,0,90); 
         transform.GetChild(0).gameObject.SetActive(false);
+        isDead = true;
     }
 }

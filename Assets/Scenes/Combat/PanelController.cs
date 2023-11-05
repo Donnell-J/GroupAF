@@ -74,12 +74,11 @@ public class PanelController : MonoBehaviour
     }  
 
     void comboCheck(){
-        if(inputCards[0] == null | inputCards[1] == null){Debug.Log("Not 2 selected");return;};
-        int[] cardIDtoCheck = new int[]{inputCards[0].ID,inputCards[1].ID};
-        Debug.Log(cardIDtoCheck[0]);
-        Debug.Log(cardIDtoCheck[1]);
-        foreach(int[] key in cardDB.instance.comboDB.Keys){
-            if(key.Except(cardIDtoCheck).Count() == 0){
+        if(inputCards[0] == null | inputCards[1] == null){return;}; //If 2 cards havent been selected you, don't do anything
+        int[] cardIDtoCheck = new int[]{inputCards[0].ID,inputCards[1].ID}; //Create new int array of selected card IDs
+
+        foreach(int[] key in cardDB.instance.comboDB.Keys){ //Loop through each combination in the singleton comboDB
+            if(key.Except(cardIDtoCheck).Count() == 0){ //If there is no difference in the array of selected IDs and the requirements, instance a new card with the Id of the resulting card 
                 cardOOC card = Instantiate(cardOOC).GetComponent<cardOOC>(); 
                 card.ID = cardDB.instance.comboDB[key];
                 Debug.Log(card.ID);//
@@ -94,12 +93,11 @@ public class PanelController : MonoBehaviour
 
     public void onConfirm(){ 
         if(outputSlot.childCount > 0){ //Means valid combo has already been found
-            Debug.Log("Valid Output");
             ref List<int> heroHand = ref BattleController.party[BattleController.turnIndex].hand;
-            heroHand.Remove(inputCards[0].ID);
+            heroHand.Remove(inputCards[0].ID); //Remove the cards used to make the combo card 
             heroHand.Remove(inputCards[1].ID);
             heroHand.Add(outputSlot.GetChild(0).GetComponent<cardOOC>().ID);
-            bc.reloadCards();
+            bc.reloadCards(); //Reload cards in battle scene to reflect new hand state
             ClosePanel();
         }
     }

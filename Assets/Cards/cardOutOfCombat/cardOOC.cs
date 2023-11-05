@@ -16,27 +16,19 @@ public class cardOOC : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         //id, title, description, img_path, base_value, functions
-        string[] record = cardDB.instance.db[ID];
+        string[] record = cardDB.instance.db[ID]; //Pulls approratiate array of data from singleton's dictionary of cards, loads values and sets text.
         this.title = record[0];
         this.description = record[1];
         this.description = this.description.Replace("]",",");
         this.img_path = record[2];
-        foreach(string valString in record[3].Split(new char[] {'.'})){
+        foreach(string valString in record[3].Split(new char[] {'.'})){ 
             this.base_values.Add(valString);
         }
-        foreach(string valString in record[4].Split(new char[] {'.'})){
-            this.targets.Add(valString);
-        }
-        foreach(string valString in record[5].Split(new char[] {'.'})){
-            this.functions.Add(valString);
-        }
-
-
         cardText = GetComponentsInChildren<TMP_Text>();
         cardText[0].text = (this.title);
         cardText[1].text = string.Format(this.description, this.base_values.ToArray());
-
     }
+    
 
     public void destroy(){
         Destroy(gameObject);
