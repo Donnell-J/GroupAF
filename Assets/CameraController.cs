@@ -21,8 +21,10 @@ public class CameraController : MonoBehaviour
     private float minFOV = 15f;
     private float maxFOV = 90f;
     private float sens = 10f;
-
-
+    
+    public Transform followObject;
+    public Vector3 offset;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class CameraController : MonoBehaviour
         parseMovement();
         parseRotation();
         parseZoom();
-
+        // transform.position = followObject.position + offset;
     }
     
     void parseMovement(){
@@ -80,10 +82,18 @@ public class CameraController : MonoBehaviour
 
     void height(){
         Vector3 cameraPosition = transform.position;
-        float ground = Terrain.activeTerrain.SampleHeight(cameraPosition);
-        cameraPosition.y = Mathf.Lerp(cameraPosition.y,  ground + 50, Time.deltaTime * 10);
-        transform.position = cameraPosition;
+        Ray ray = new Ray(cameraPosition, Vector3.down);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            float ground = hit.point.y;
+            cameraPosition.y = Mathf.Lerp(cameraPosition.y,  ground + 55, Time.deltaTime * 10);
+            transform.position = cameraPosition;
+            Debug.Log(cameraPosition);
+        }
     }
+    
+    
 
-
+    
 }
