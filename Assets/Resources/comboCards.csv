@@ -1,11 +1,9 @@
-
-comboCardID,requirements
-400,0.0
-401,2.2
-500,100.100
-501,100.104
-600,200.200
-601,202.202
-700,300.300
-701,303.303
-
+﻿ID,title,description,img_path,base_value,targets,functions,requirements
+0,Ravage,Deal {0} slashing damage to chosen target.,,15,enemy,getHit,0.0
+1,Reinforce,Blocks {0} damage] block isn't lost at the end of the turn.,,15.1.barricade,self.self,defend.applyStatus,2.2
+100,Multishot,Deal {0} piercing damage to chosen target.,,15,enemy,getHit,100.100
+101,Shatter,Deal {0} piercing damage to chosen target. Stuns the target.,,5.1.stun,enemy.enemy,getHit.applyStatus,100.104
+200,Lunar Missile,Deal {0} magic damage to chosen enemy,,15,enemy,getHit,200.200
+201,Eruption,Deal {0} magic damage to target and 5 magic damage to adjacent enemies.,,15.5,enemy.enemyAdjacent,getHit,202.202
+300,Magic Wave,Deal {0} magic damage to chosen target.,,10,enemy,getHit,300.300
+301,Group Heal,Heals all allies {0} health each.,,6,team,heal,303.303
