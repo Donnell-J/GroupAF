@@ -29,6 +29,6 @@ Cards can be combined by pressing the combination button and selecting 2 cards, 
 Once a combined card is created, it will show up in your hand and can be played.\ 
 As 2 cards are used to create a combination card, your hand will have 1 less card than everyone else. As you can only draw new cards when every hero has run out of cards, this means you will lose a turn, in return for a stronger card to play.\
 If all heroes have died, you lose the combat. If you kill all the enemies you win the combat.\
-Winning the combat will display a rewards screen, where for each hero you can either choose 1 out of 3 shown cards, or to increase their maximum health.\
+Winning the combat will display a rewards screen, where for each hero you can either choose 1 out of 3 shown cards, or to increase their maximum health.
 
 
