@@ -38,6 +38,11 @@ public class cardOOC : MonoBehaviour
 
     }
 
+    public void destroy(){
+        Destroy(gameObject);
+        Destroy(this);
+    }
+
     // Update is called once per frame
     void Update()
     {

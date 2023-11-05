@@ -131,7 +131,7 @@ public class BattleController : MonoBehaviour
             card.ID = party[turnIndex].draw();
         }
     }
-    void reloadCards(){
+    public void reloadCards(){
         for(int i =0; i < handUI.childCount;i++){
             handUI.GetChild(i).GetComponent<Card>().destroy();
         }
@@ -141,4 +141,5 @@ public class BattleController : MonoBehaviour
             card.ID = id;
         }
     }
+    
 }

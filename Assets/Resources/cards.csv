@@ -8,6 +8,8 @@
 6,Fortify,Blocks {0} damage.,,10,self,defend
 7,Rusty Blade,Deal {0} slashing damage to target] the target becomes weakened.,,5.1.weakened,enemy.enemy,getHit.applyStatus
 8,Dual Wield,Deal {0} slashing damage to chosen target.,,10,enemy,getHit
+400,Ravage,Deal {0} slashing damage to chosen target.,,15,enemy,getHit
+401,Reinforce,Blocks {0} damage] block isn't lost at the end of the turn.,,15.1.barricade,self.self,defend.applyStatus
 ,,,,,,
 100,Pierce,Deal {0} piercing damage to chosen target.,,5,enemy,getHit
 101,Dagger Toss,Deal {0} piercing damage to chosen target.,,5,enemy,getHit
@@ -15,25 +17,31 @@
 103,Headshot,Deal {0} piercing damage to chosen target.,,10,enemy,getHit
 104,Ankle Grazer,Deal {0} piercing damage and weakens the chosen target.,,4.1.weakened,enemy.enemy,getHit.applyStatus
 105,Poisoned Arrow,Deal {0} piercing damage] and applies {1} poison.,,5.3.poison,enemy.enemy,getHit.applyStatus
-106,Flaming Arrow,Deal {0} piercing damage to chosen target] and {1} damage to adjacent enemies.,,5,enemy.enemyAdjacent,getHit
+106,Flaming Arrow,Deal {0} piercing damage to chosen target] and {1} damage to adjacent enemies.,,5.5,enemy.enemyAdjacent,getHit.getHit
 107,Shatter,Deal {0} piercing damage] become vulnerable.,,18.1.vulnerable,enemy.self,getHit.applyStatus
 108,Dagger Lunge,Deal {0} Piercing damage to target] Block {1} damage.,,5.5,enemy.self,getHit.defend
+500,Multishot,Deal {0} piercing damage to chosen target.,,15,enemy,getHit
+501,Stun Shot,Deal {0} piercing damage to chosen target. Stuns the target.,,5.1.stun,enemy.enemy,getHit.applyStatus
 ,,,,,,
 200,Magic Missile,Deal {0} magic damage to chosen target.,,5,enemy,getHit
 201,Reflect,Blocks {0} damage.,,5,self,defend
 202,Fireball,Deal {0} magic damage to target and {1} magic damage to adjacent enemies.,,7.3,enemy.enemyAdjacent,getHit.getHit
 203,Shield Wall,Blocks {0} damage for all Allies.,,3,team,defend
 204,Poison,Applies {0} poison to chosen target.,,3.poison,enemy,applyStatus
-205,Dark Truth,Weakens the chosen target and adjacent enemies for {0} turn(s).,,2.weakened,enemy.enemyAdjacent,applyStatus
-206,Poison Spray,Applies {0} poison to chosen target and adjacent enemies.,,2.poison,enemy.enemyAdjacent,applyStatus
+205,Dark Truth,Weakens the chosen target and adjacent enemies for {0} turn(s).,,2.weakened.2.weakened,enemy.enemyAdjacent,applyStatus.applyStatus
+206,Poison Spray,Applies {0} poison to chosen target and adjacent enemies.,,2.poison,enemy.enemyAdjacent,applyStatus.applyStatus
 207,Life Leech, Deal {0} magic damage to target. Heal for {1} health.,,5.5,enemy.self,getHit.heal
+600,Lunar Missile,Deal {0} magic damage to chosen enemy,,15,enemy,getHit
+601,Eruption,Deal {0} magic damage to target and 5 magic damage to adjacent enemies.,,15.5,enemy.enemyAdjacent,getHit.getHit
 ,,,,,,
 300,Magic Splash,Deal {0} magic damage to chosen target.,,4,enemy,getHit
 301,Smite,Deal {0} slashing damage on chosen target] the target becomes vulnerable.,,4.1.vulnerable,enemy.enemy,getHit.applyStatus
 302,Ward,Blocks {0} damage.,,5,self,defend
 303,Target Heal,Heals chosen ally {0} health points.,,8,ally,heal
-304,Exhaust,Weakens the chosen target for {0} turns.,,2.weakened,enemy,applyStatus
+304,Exhaust,Weakens the chosen target for {0} turns.,,2,enemy,applyStatus
 305,Empower,Strengthens a chosen ally for {0} turns.,,2.strengthen,ally,applyStatus
 306,Paranoia,The chosen target becomes vulnerable and weakened for {0} turn(s).,,3.weakened.3.vulnerable,enemy.enemy,applyStatus.applyStatus
 307,Saviour,Heals a chosen ally {0} health.,,15,ally,heal
 308,Chosen's Light,Deal {0} magic damage to target.,,8,enemy,getHit
+700,Magic Wave,Deal {0} magic damage to chosen target.,,10,enemy,getHit
+701,Group Heal,Heals all allies {0} health each.,,6,team,heal

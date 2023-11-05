@@ -66,7 +66,7 @@ public class Hero : MonoBehaviour, IcombatFunction
     }
 
     public void applyStatus(string status, int amount){
-        try{
+        try{//if the hero already has status applied, increase the amount of it, otherwise add the status to it's statuses dictionary. update/Create corresponding StatusCounter
             statuses[status] += amount;
             StatusCounter s = statusBar.transform.Find(status).GetComponent<StatusCounter>();
             s.updateCount(amount);
