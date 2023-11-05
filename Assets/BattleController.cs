@@ -36,22 +36,38 @@ public class BattleController : MonoBehaviour
     IEnumerator Combat(){
         int RoundCount=0;
         bool finished = false;
+        bool allTeamEmpty;
         while(!finished){
             roundCounter.text = string.Format("Round: {0}",++RoundCount);
             setEnemyIntention();
+            allTeamEmpty = true;
+            foreach(Hero hero in party){
+                if(hero.hand.Count != 0){
+                    allTeamEmpty = false;
+                }
+            }
             foreach(Hero hero in party.ToList()){ 
                 hero.toggleActive();
                 hero.resolveStatuses();
                 hero.reduceStatuses();
-                if(hero.hand.Count == 0){
+
+                if(allTeamEmpty){
                     drawCards();
                 }else{
                     reloadCards();
                 }
+
                 deckButton.transform.GetChild(0).GetComponent<TMP_Text>().text = string.Format("Deck: {0}",hero.currentDeck.Count);
                 discardButton.transform.GetChild(0).GetComponent<TMP_Text>().text = string.Format("Discard: {0}",hero.discardPile.Count);
+
+
+                if(hero.hand.Count ==0){
+                    turnInProgress = true;
+                }
+
                 yield return new WaitUntil(() => turnInProgress);
                 turnInProgress = false;
+                
                 if(enemies.Count ==0){
                     finished = true;
                     break;
@@ -82,7 +98,7 @@ public class BattleController : MonoBehaviour
         }
     }
     void nextTurn(){
-        turnIndex = (turnIndex + 1) % partySize;
+        turnIndex = (turnIndex + 1) % party.Count;
         reloadCards();
     }
     private void populateSides(){
