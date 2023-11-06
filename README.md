@@ -8,7 +8,7 @@ In the exploration scene, there are interactable objects that will trigger comba
 There are 2 types of triggers:\
   One where you do not get to decide whether or not to accept the combat.\
   Another is where you can temporarily decline the combat to further explore the scene.\
-Camera moves with WASD, zooms in and out using scroll wheel, and rotates by holding middle mouse button and moving your mouse.\
+Camera moves with WASD, zooms in and out using scroll wheel, and rotates by holding middle mouse button and moving your mouse.
 
 Combat:\
 Turn-based combat. You and the other heroes will all draw 5 cards at the start of the game. \
