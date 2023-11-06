@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using UnityEngine.SceneManagement;
 public class BattleController : MonoBehaviour
 {
     // 
@@ -24,8 +25,10 @@ public class BattleController : MonoBehaviour
 
     public GameObject deckButton;
     public GameObject discardButton;
+    public GameObject rewardScreen;
     void Start()
     {   
+        enemyCount = MovingScenes.instance.getNumberEnemies();
         randomizeTurnOrder(); //randomize turn order for each combat so that it's not too repetetive
         party = new List<Hero>();
         enemies = new List<Enemy>();
@@ -118,9 +121,10 @@ public class BattleController : MonoBehaviour
         //CombatOver here;
         if(enemies.Count ==0){
             Debug.Log("Combat won");
-            //func for Reward screen initialisation
+            rewardScreen.SetActive(true);
         }else{
             Debug.Log("Game over");
+            SceneManager.LoadScene("GameOver");
         }
     }
     void nextTurn(){
