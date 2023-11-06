@@ -12,6 +12,9 @@ public class ambushTrigger : MonoBehaviour
     private void Start()
     {
         AmbushText.SetActive(false);
+        if (name.Equals(MovingScenes.instance.getCombatTrigger())){ //If this obj has the same name as object thatr previously started combat, destroy it
+            Destroy(this);
+        }
     }
 
     IEnumerator Wait()
@@ -20,6 +23,7 @@ public class ambushTrigger : MonoBehaviour
         AmbushText.SetActive(false);
         MovingScenes.instance.setNumberEnemies(numEnemies); // load data to singleton and move to battle scene 
         MovingScenes.instance.setPreCombatPosition(player.position);
+        MovingScenes.instance.setCombatTrigger(name);
         SceneManager.LoadScene("BattleScene");
     }
 

@@ -16,6 +16,9 @@ public class InteractSceneSwitch : MonoBehaviour
             startCombatMenu.SetActive(false); //Hide it's screen overlay until necessary 
             openMenu = false;
         }
+        if (name.Equals(MovingScenes.instance.getCombatTrigger())){ //If this obj has the same name as object thatr previously started combat, destroy it
+            Destroy(this);
+        }
     }
 
     void OnMouseDown()
@@ -37,6 +40,7 @@ public class InteractSceneSwitch : MonoBehaviour
         openMenu = false;
         MovingScenes.instance.setNumberEnemies(numEnemies);
         MovingScenes.instance.setPreCombatPosition(player.position); //Load relevant data into singleton, switch to battle scene
+        MovingScenes.instance.setCombatTrigger(name);
         SceneManager.LoadScene("BattleScene");
     }
     public void ButtonNoClicked()

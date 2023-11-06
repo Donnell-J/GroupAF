@@ -2040,6 +2040,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RewardScreenCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 436216974023552318, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 436216974023552318, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 436216974023552318, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 254
+      objectReference: {fileID: 0}
     - target: {fileID: 1395032599581888611, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2147,6 +2159,30 @@ PrefabInstance:
     - target: {fileID: 1915046041740749137, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203583309983062141, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203583309983062141, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203583309983062141, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 254
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064399028435507693, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064399028435507693, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064399028435507693, guid: 01de6424d31b37b4bbedcf67bace97e4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 254
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
