@@ -7,10 +7,12 @@ public class SettingsMenu : MonoBehaviour
     public bool SettingsMenuIsOpen = false;
     
     public KeybindsMenu keybindsMenu;
+    public GlossaryMenu glossaryMenu;
     
     public GameObject SettingsMenuUI;
     public GameObject PauseMenuUI;
     public GameObject KeybindsMenuUI;
+    public GameObject GlossaryMenuUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +45,14 @@ public class SettingsMenu : MonoBehaviour
         KeybindsMenuUI.SetActive(true);
         SettingsMenuIsOpen = false;
         keybindsMenu.KeybindsMenuIsOpen = true;
+    }
+    
+    public void LoadGlossary()
+    {
+        Debug.Log("Loading glossary...");
+        SettingsMenuUI.SetActive(false);
+        GlossaryMenuUI.SetActive(true);
+        SettingsMenuIsOpen = false;
+        glossaryMenu.GlossaryMenuIsOpen = true;
     }
 }

@@ -12,7 +12,7 @@ public class FirstText : MonoBehaviour
     {
         FirstTextUI.SetActive(true);
         SecondTextUI.SetActive(false);
-        ThirdTextUI.SetActive(false);
+        ThirdTextUI.SetActive(false); 
         Invoke("HideFirstText", 5f);
     }
     void HideFirstText()

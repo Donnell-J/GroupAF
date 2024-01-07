@@ -6,15 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ccdd2831-72ee-49a9-b634-5b46fb75d96e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GroupAF/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GroupAF/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FSP/MAST/Etc/CoreSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FSP/MAST/Etc/CoreSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FSP/MAST/Etc/InterfaceState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FSP/MAST/Etc/InterfaceState.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FSP/MAST/Settings/GUI.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FSP/MAST/Settings/GUI.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FSP/MAST/Settings/Hotkey.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FSP/MAST/Settings/Hotkey.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FSP/MAST/Settings/Placement.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FSP/MAST/Settings/Placement.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/IntroScripts/FirstText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/IntroScripts/FirstText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Plane Meshes/Ocean50x50W750H750.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Plane Meshes/Ocean50x50W750H750.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MenuScripts/SettingsMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MenuScripts/SettingsMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Intro.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Intro.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Start.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Start.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/dungeon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/dungeon.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/villageLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/villageLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +122,7 @@
       <workItem from="1704552150200" duration="616000" />
       <workItem from="1704560951673" duration="11709000" />
       <workItem from="1704581115048" duration="3417000" />
+      <workItem from="1704656658066" duration="3036000" />
     </task>
     <servers />
   </component>
