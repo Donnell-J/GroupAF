@@ -13,9 +13,12 @@ public class BattleController : MonoBehaviour
     public GameObject enemyPrefab; //For proto: single enemy type, will become List later on;
     [SerializeField]
     public Transform handUI;
+    public  GraphicRaycaster cardUIRaycaster;
     public int partySize;
     public GameObject cardDefault;
     public static List<Hero> party; 
+
+
     public static int turnIndex;
 
     public static List<Enemy> enemies;
@@ -25,6 +28,8 @@ public class BattleController : MonoBehaviour
 
     public GameObject deckButton;
     public GameObject discardButton;
+
+    public GameObject combinationButton;
     public GameObject rewardScreen;
     void Start()
     {   
@@ -104,7 +109,9 @@ public class BattleController : MonoBehaviour
                 nextTurn();//Moves to next turn, reloads cards mostly deprecated
             }
             if(!finished){
+                toggleUI();
                 foreach(Enemy enemy in enemies.ToList()){
+                    yield return new WaitForSeconds(1);
                     enemy.resolveStatuses();
                     if(!enemy.isDead & !enemy.isStunned){
                         enemy.takeTurn();
@@ -116,13 +123,20 @@ public class BattleController : MonoBehaviour
                             break;
                         }
                 }
+                toggleUI();
             }
         }
         //CombatOver here;
+            
         if(enemies.Count ==0){
+            yield return new WaitForSeconds(1.5f);
+            foreach(Hero hero in party.ToList()){
+                hero.animPlayer.SetTrigger("playVictory");
+            }
             Debug.Log("Combat won");
             rewardScreen.SetActive(true);
         }else{
+            yield return new WaitForSeconds(1);
             Debug.Log("Game over");
             SceneManager.LoadScene("GameOver");
         }
@@ -162,6 +176,14 @@ public class BattleController : MonoBehaviour
         foreach(Enemy enemy in enemies){
             enemy.setIntention();
         }
+    }
+
+    private void toggleUI(){
+        cardUIRaycaster.enabled = !cardUIRaycaster.enabled;
+        for(int i =0; i < handUI.childCount;i++){
+            Button b = handUI.GetChild(i).GetComponent<Button>();
+            b.interactable = !b.interactable; 
+        };
     }
 
     // Update is called once per frame

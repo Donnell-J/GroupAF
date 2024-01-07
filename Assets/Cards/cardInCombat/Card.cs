@@ -23,6 +23,7 @@ public class Card : MonoBehaviour {
     private bool isTargetting = false;
     public LineRenderer lineRenderer;
 
+
     [SerializeField]
     private InputActionReference mousePos;
 
@@ -52,6 +53,7 @@ public class Card : MonoBehaviour {
         foreach(string valString in record[5].Split(new char[] {'.'})){
             this.functions.Add(valString);
         }
+        this.description = description + "\nTargets: " + this.targets[0];
 
         //Loads text into the card
         cardText = GetComponentsInChildren<TMP_Text>();
@@ -89,6 +91,7 @@ public class Card : MonoBehaviour {
         }
     }
     void startCardExecution(IcombatFunction mainTarget){
+        var cardUser = BattleController.party[BattleController.turnIndex];
         int valIndex =0; //Current offset in base_values[] we need to start reading from for the current function
         for(int i = 0; i < functions.Count;i++){
             List<IcombatFunction> allTargets = new List<IcombatFunction>(); 
@@ -106,7 +109,7 @@ public class Card : MonoBehaviour {
                     allTargets.Add(BattleController.enemies[mainTargetPos+1] as IcombatFunction);
                 }
             }else if(targets[i]=="self"){
-                allTargets.Add(BattleController.party[BattleController.turnIndex]);//Targets the hero who's turn it currently is
+                allTargets.Add(cardUser);//Targets the hero who's turn it currently is
             }else if(targets[i] == "enemy"){
                 allTargets.Add(mainEnemyTarget);//targets enemy from the raycast earlier
             }else if(targets[i] == "ally"){
@@ -114,28 +117,42 @@ public class Card : MonoBehaviour {
             }
             string func = this.functions[i];
             if(func.Contains("getHit")){
+                if( i==0){
+                    cardUser.animPlayer.SetInteger("attackAnim", UnityEngine.Random.Range(0,3));
+                    cardUser.animPlayer.SetTrigger("playAttack");
+                }
                 foreach(IcombatFunction tgt in allTargets){
                     int calcDmg = Convert.ToInt32(this.base_values[valIndex]); //Vals stored as Object, casts to integer
-                    if (BattleController.party[BattleController.turnIndex].statuses.ContainsKey("weakened")){
+                    if (cardUser.statuses.ContainsKey("weakened")){
                         calcDmg /=2; //weakened halves dmg
                     }
-                    if (BattleController.party[BattleController.turnIndex].statuses.ContainsKey("strengthen")){
+                    if (cardUser.statuses.ContainsKey("strengthen")){
                         calcDmg *=2; //strengthen doubles dmg
                     }
-                        tgt.getHit(calcDmg,false); //hit the target without bypassing shields
+                        tgt.getHit(calcDmg,false, this.base_values[valIndex+1].ToString()); //hit the target without bypassing shields
                 }
-                valIndex++;//getHit only uses 1 param so next function starts +1 in 
+                valIndex+= 2;//getHit only uses 1 param so next function starts +1 in 
             }else if(func.Contains("applyStatus")){
-                foreach(IcombatFunction tgt in allTargets){
-                    tgt.applyStatus(this.base_values[valIndex+1].ToString(),Convert.ToInt32(this.base_values[valIndex]));
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playStatus");
+                    
                 }
-                valIndex +=2;//applyStatus uses 2 params, so increase index by 2
+                foreach(IcombatFunction tgt in allTargets){
+                    tgt.applyStatus(this.base_values[valIndex+1].ToString(),Convert.ToInt32(this.base_values[valIndex]),this.base_values[valIndex+2].ToString().Contains("true"));
+                }
+                valIndex +=3;//applyStatus uses 2 params, so increase index by 2
             }else if(func.Contains("defend")){
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playBlock");
+                }
                 foreach(IcombatFunction tgt in allTargets){
                     tgt.defend(Convert.ToInt32(this.base_values[valIndex]));
                 }
                 valIndex ++;
             }else if(func.Contains("heal")){
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playStatus");
+                }
                 foreach(IcombatFunction tgt in allTargets){
                     tgt.heal(Convert.ToInt32(this.base_values[valIndex]));
                 }
@@ -178,7 +195,7 @@ public class Card : MonoBehaviour {
         for(int i = 0; i < 30; i++){ //Quadratic Bezier curve function to create a better set of points for the line
 			t = i / (30.0f-1.0f);
 			position = ((1.0f - t)*(1.0f - t)) * p0 + 2.0f * (1.0f - t) * t * p1 + t * t * p2;
-            
+            position.z = 1;
 			lineRenderer.SetPosition(i, position);
         }
     }

@@ -7,7 +7,7 @@ public class MovingScenes: MonoBehaviour{
     private int numberEnemies =3;
     private Vector3 preCombatPosition = new Vector3(760,80,746);
     private Boolean combatSuccess;
-    private string combatTriggerName;
+    private List<string> triggeredCombats;
     public GameObject player;
     // singeleton
 
@@ -55,10 +55,10 @@ public class MovingScenes: MonoBehaviour{
     }
     
     public void setCombatTrigger(string name){
-        this.combatTriggerName = name;
+        this.triggeredCombats.Add(name);
     }
-    public string getCombatTrigger(){
-        return this.combatTriggerName;
+    public List<string> getTriggeredCombats(){
+        return this.triggeredCombats;
     }
 
 }
