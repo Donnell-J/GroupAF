@@ -42,6 +42,7 @@ public class FirstText : MonoBehaviour
     void HideThirdText()
     {
         ThirdTextUI.SetActive(false);
-        SceneManager.LoadScene("Scenes/Levels/Level2");
+        MovingScenes.instance.nextLevelStartPos(new Vector3(32f,1.6f,8.5f));
+        SceneManager.LoadScene("Scenes/Exploration/Levels/Level2");
     }
 }

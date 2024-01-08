@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement; 
 public class MovingScenes: MonoBehaviour{
     public static MovingScenes instance; // static instance of the class that can be read by other scripts 
     public GameObject[] enemyList;
-    private Vector3 preCombatPosition = new Vector3(32f,1.6f,8.5f);
+    private Vector3 preCombatPosition;
     private Boolean combatSuccess;
+    private Scene fromScene;
     private List<string> triggeredCombats;
     public GameObject player;
     // singeleton
@@ -62,4 +64,14 @@ public class MovingScenes: MonoBehaviour{
         return this.triggeredCombats;
     }
 
+    public void setFromScene(Scene s){
+        this.fromScene = s;
+    }
+    public Scene getFromScene(){
+        return this.fromScene;
+    }
+
+    public void nextLevelStartPos(Vector3 pos){
+        this.preCombatPosition = pos;
+    }
 }

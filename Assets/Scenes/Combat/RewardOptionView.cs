@@ -64,7 +64,7 @@ public class RewardOptionView : MonoBehaviour
         for (int i =0; i <4; i++){
             cardDB.instance.heroMaxHPs[i] += 5; //increases max hp of each hero by 5 for the next combat
         }
-        SceneManager.LoadScene("Exploration");//Sends us back to Exploration scene 
+        SceneManager.LoadScene(MovingScenes.instance.getFromScene().name);//Sends us back to Exploration scene 
 
     }
 
@@ -72,7 +72,7 @@ public class RewardOptionView : MonoBehaviour
         for(int i = 0; i < 4; i++){
             cardDB.instance.heroDecks[i].Add(rewardIDs[i]);
         }
-        SceneManager.LoadScene("Exploration");//Sends us back to Exploration scene 
+        SceneManager.LoadScene(MovingScenes.instance.getFromScene().name);//Sends us back to Exploration scene 
     }
 
 }
