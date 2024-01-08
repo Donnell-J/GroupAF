@@ -5,10 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccdd2831-72ee-49a9-b634-5b46fb75d96e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GroupAF/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GroupAF/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GroupAF/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FSP/MAST/Etc/InterfaceState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FSP/MAST/Etc/InterfaceState.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FSP/MAST/Settings/GUI.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FSP/MAST/Settings/GUI.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Low Poly Water.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Low Poly Water/Plane Meshes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Low Poly Water/Plane Meshes/Plane1x1W100H100.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Low Poly Water/Plane Meshes/Plane1x1W100H100.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Animation/CameraAnim.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Animation/CameraAnim.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Animation/CameraAnimator.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Animation/CameraAnimator.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Documentation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Documentation/LowPolyWater.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Documentation/LowPolyWater.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/Credits.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/Credits.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/Materials/IslandMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/Materials/IslandMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/Materials/defaultMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/Materials/defaultMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/island1_design2_c4d.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/island1_design2_c4d.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/textures/textureAmbient_Occlusion.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/textures/textureAmbient_Occlusion.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/textures/textureSurface_Color_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/LowPoly Island/textures/textureSurface_Color_2.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Materials/LowPolyWaterMaterial.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Materials/LowPolyWaterMaterial.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Plane Meshes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Plane Meshes/Ocean50x50W750H750.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Plane Meshes/Ocean50x50W750H750.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Scripts/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Scripts/Editor/GeneratePlane.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Scripts/Editor/GeneratePlane.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Scripts/LowPolyWater.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Scripts/LowPolyWater.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Shaders/WaterShaded.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Shaders/WaterShaded.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Textures/Foam.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/Textures/Foam.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/_Demo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/_Demo/DemoScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyWater_Pack/_Demo/DemoScene.unity.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +67,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/FSP/MAST/Scripts/Building/GridManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/IgniteCoders/Simple Water Shader/Info/Scripts/Readme.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -118,7 +166,7 @@
       <workItem from="1704560951673" duration="11709000" />
       <workItem from="1704581115048" duration="3417000" />
       <workItem from="1704656658066" duration="3036000" />
-      <workItem from="1704690402146" duration="862000" />
+      <workItem from="1704690402146" duration="2448000" />
     </task>
     <servers />
   </component>
