@@ -28,8 +28,8 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = MovingScenes.instance.getPreCombatPosition();
-        transform.rotation = MovingScenes.instance.getCameraRotation();
+        //transform.position = MovingScenes.instance.getPreCombatPosition();
+        //transform.rotation = MovingScenes.instance.getCameraRotation();
     }
 
     // Update is called once per frame

@@ -14,11 +14,12 @@ public class MovingScenes: MonoBehaviour{
     private Boolean combatSuccess;
     private string fromScene;
     private List<string> triggeredCombats;
-    public GameObject player;
     // singeleton
 
      void Awake()
     {
+        string sName = SceneManager.GetActiveScene().name;
+        
         if (instance == null)
         {
             instance = this;
@@ -27,6 +28,7 @@ public class MovingScenes: MonoBehaviour{
         }
         else
         {
+            Debug.Log("instance exists in "+sName);
             Destroy(gameObject);
         }
     }

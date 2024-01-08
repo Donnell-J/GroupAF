@@ -45,7 +45,6 @@ public class CardViewMenu : MonoBehaviour
                 heroListSorted[3] = h;
             }
         }
-        Debug.Log("inited");
     }
     public void openMenu(string m){
         title.text = m+" Piles";

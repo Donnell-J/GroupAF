@@ -17,16 +17,18 @@ public class cardDB : MonoBehaviour {
 
     public Dictionary<int,List<int>> heroDecks = new Dictionary<int, List<int>>();
     public Dictionary<int,List<int>> checkPointHeroDecks = new Dictionary<int, List<int>>();
-    public int[] heroMaxHPs = new int[4]; //initial max hero hp
-    public int[] savedHeroMaxHPs = new int[]{60,60,55,55};
+    public int[] heroMaxHPs; //initial max hero hp
+    public int[] savedHeroMaxHPs;
 
     void Awake(){
         startSingleton();
+        ;
     }
     
     void startSingleton(){ //Ensures that only one singleton exists at a time
         if(instance == null){
             instance = this;
+            heroMaxHPs = new int[]{60,60,55,55};
             loadDB();
             setStartDecks();
         }else{
@@ -66,24 +68,28 @@ public class cardDB : MonoBehaviour {
     public void setStartDecks(){ //Sets each hero deck to the starting deck
         for(int i = 0; i < 4; i++){
             List<int> l =new List<int>();
-            heroDecks.Add(i,l);
+            checkPointHeroDecks.Add(i,null);
             l.AddRange(startingDecks[i]);
-            checkPointHeroDecks.Add(i,l);
+            heroDecks.Add(i,l);
         }
     }
     public void nextLevelSave(){
         for(int i = 0; i < 4; i++){
             checkPointHeroDecks[i] = heroDecks[i];
-            savedHeroMaxHPs[i] = heroMaxHPs[i];
+            Debug.Log(i);
+            
         }
-
+        savedHeroMaxHPs = heroMaxHPs;
     }
 
     public void loadSaveState(){
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 4; i++){  
+            Debug.Log(i);
             heroDecks[i] = checkPointHeroDecks[i];
-            heroMaxHPs[i] = savedHeroMaxHPs[i];
+            Debug.Log("saved: " + savedHeroMaxHPs[i].ToString());
+            Debug.Log("cur: " + heroMaxHPs[i].ToString());
         }
+        heroMaxHPs = savedHeroMaxHPs;
         keyCount =0;
     }
     

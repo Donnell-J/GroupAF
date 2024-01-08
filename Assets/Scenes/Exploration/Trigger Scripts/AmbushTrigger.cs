@@ -41,12 +41,10 @@ public class ambushTrigger : MonoBehaviour
     }
 
     void OnMouseDown(){
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(Vector3.Distance(player.position,transform.position) <= 30){//Start countdown if clicked on and player in range
-                AmbushText.SetActive(true); 
-                StartCoroutine(Wait());
-            }
+        Debug.Log("herer");
+        if(Vector3.Distance(player.position,transform.position) <= 10){//Start countdown if clicked on and player in range
+            AmbushText.SetActive(true); 
+            StartCoroutine(Wait());
         }
     }
 }

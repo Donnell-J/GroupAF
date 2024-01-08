@@ -13,12 +13,10 @@ public class StartMenu : MonoBehaviour
     void Start()
     {
         StartMenuUI.SetActive(true);
-        Debug.Log("Start Menu is active");
     }
 
     public void LoadSettings()
     {
-        Debug.Log("Loading settings...");
         StartMenuUI.SetActive(false);
         SettingsMenuUI.SetActive(true);
         settingsMenu.SettingsMenuIsOpen = true;
@@ -26,7 +24,6 @@ public class StartMenu : MonoBehaviour
     
     public void StartGame()
     {
-        Debug.Log("Starting game...");
         StartMenuUI.SetActive(false);
         SceneManager.LoadScene("Scenes/Exploration/Levels/Intro");
     }

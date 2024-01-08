@@ -876,7 +876,7 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!1001 &1018932814
+--- !u!1001 &859245618
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -886,15 +886,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -239.1
+      value: -240.04172
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.39
+      value: -0.31
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -330.7239
+      value: -346.05
       objectReference: {fileID: 0}
     - target: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1668,4 +1668,4 @@ SceneRoots:
   - {fileID: 105802213}
   - {fileID: 1632083383}
   - {fileID: 1331309394}
-  - {fileID: 1018932814}
+  - {fileID: 859245618}

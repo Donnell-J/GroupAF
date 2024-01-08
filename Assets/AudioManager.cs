@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
@@ -43,6 +42,23 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void updateSong(string sName){
+        musicSource.Stop();
+        Debug.Log("update song call: " + sName);
+        if(sName.Equals("Start")){
+            musicSource.clip = menuMusic;
+        }else if(sName.Contains("Level2")){
+            musicSource.clip = level1Music;
+        }else if(sName.Equals("villageLevel")){
+            musicSource.clip = level2Music;
+        }else if(sName.Equals("dungeon")){
+            musicSource.clip = level3Music;
+        } else if(sName.Equals("Level 1 BS") | sName.Equals("Level 2 BS") | sName.Equals("Level 3 BS")){
+            musicSource.clip = combatMusic;
+        }
+        musicSource.Play();
     }
 
 }
