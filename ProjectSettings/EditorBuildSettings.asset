@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Exploration/Exploration.unity
     guid: 7b0f3ca79477eb744a67c451a921a380
   - enabled: 1
-    path: Assets/Scenes/Combat/BattleScene.unity
+    path: Assets/Scenes/Combat/Level 1 BS.unity
     guid: fc79edd524b91a04e8de17c2455c61ba
   - enabled: 1
     path: Assets/Scenes/Exploration/Levels/Level2.unity
