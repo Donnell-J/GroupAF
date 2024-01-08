@@ -9,6 +9,7 @@ public class InteractSceneSwitch : MonoBehaviour
     public Boolean openMenu;
     public GameObject[] encounterList;
     public int enemyCount;
+    public string item;
     
     private void Start()
     {
