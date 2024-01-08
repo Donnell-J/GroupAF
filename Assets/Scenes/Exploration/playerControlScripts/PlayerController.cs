@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MovingScenes.instance.player = this.gameObject;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         transform.position = MovingScenes.instance.getPreCombatPosition();
         

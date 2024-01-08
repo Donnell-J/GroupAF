@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        musicSource.clip = combatMusic;
+        musicSource.clip = menuMusic;
         musicSource.Play();
     }
 
