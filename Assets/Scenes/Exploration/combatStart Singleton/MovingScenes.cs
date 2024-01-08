@@ -7,6 +7,7 @@ public class MovingScenes: MonoBehaviour{
     public static MovingScenes instance; // static instance of the class that can be read by other scripts 
     public GameObject[] enemyList;
     private Vector3 preCombatPosition;
+    private Quaternion preCombatCameraRotation;
     private Boolean combatSuccess;
     private Scene fromScene;
     private List<string> triggeredCombats;
@@ -73,5 +74,12 @@ public class MovingScenes: MonoBehaviour{
 
     public void nextLevelStartPos(Vector3 pos){
         this.preCombatPosition = pos;
+    }
+
+    public void setCameraRotation(Quaternion v){
+        this.preCombatCameraRotation = v;
+    }
+    public Quaternion getCameraRotation(){
+        return this.preCombatCameraRotation;
     }
 }

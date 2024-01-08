@@ -43,6 +43,7 @@ public class FirstText : MonoBehaviour
     {
         ThirdTextUI.SetActive(false);
         MovingScenes.instance.nextLevelStartPos(new Vector3(32f,1.6f,8.5f));
+        MovingScenes.instance.setCameraRotation( Quaternion.Euler(0f,-75f,0f));
         SceneManager.LoadScene("Scenes/Exploration/Levels/Level2");
     }
 }

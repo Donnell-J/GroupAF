@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
 
     [SerializeField]
-    private int speed = 15;
+    private int speed = 5;
     [SerializeField]
     private int rotSpeed = 180;
     [SerializeField]
@@ -29,6 +29,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         transform.position = MovingScenes.instance.getPreCombatPosition();
+        transform.rotation = MovingScenes.instance.getCameraRotation();
     }
 
     // Update is called once per frame
