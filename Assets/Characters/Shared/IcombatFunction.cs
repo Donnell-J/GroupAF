@@ -7,5 +7,8 @@ public interface IcombatFunction{
     void heal(int heal);
     void applyStatus(string status, int amount, bool isGood);
     void defend(int amount);
+    void forceAction(int action);
+
+    void removeStatuses();
     
 }

@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     public HPBar hpBar;
 
     public VisualEffect vfxPlayer;
+    public Animator animPlayer;
 
-    public TMP_Text intentText;
     public IntentionIcon intentionIcon;
     
     public GameObject statusBar;
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     
     [SerializeField]
     public List<int> baseActionWeights;
-    private List<int> actionWeights;
+    private int[] actionWeights;
     [SerializeField]
     public List<int> actionStrengths;
     public List<string> debuffsCanApply;// what statuses the enemy can apply, each with equal probability
@@ -72,11 +72,12 @@ public class Enemy : MonoBehaviour, IcombatFunction{
 
     int intentValue;
     void Awake(){
+        maxHP += Random.Range(-(maxHP/10),(maxHP/10));
         currentHP = maxHP;
         hpBar.setMax(maxHP);
         personalityType = Random.Range(0,3);
         nameBar.text = personalityKeywords[personalityType,Random.Range(0,5)] +" "+ Name ;
-        actionWeights = new List<int>(baseActionWeights.Count);
+        actionWeights = new int[baseActionWeights.Count];
         
     }
     void start(){
@@ -97,7 +98,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
             weightModifiers[6] +=0.2f;
         }
 
-        for(int i = 0; i<actionWeights.Count; i++){
+        for(int i = 0; i<baseActionWeights.Count; i++){
             actionWeights[i] = Mathf.RoundToInt(baseActionWeights[i] * weightModifiers[i]);
         }
         
@@ -110,7 +111,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
 
         int choiceVal = Random.Range(0,total); //Random number from 0-99 to decide action with % weightings
         int pointer = 0;
-        for(int i = 0; i < actionWeights.Count; i++){
+        for(int i = 0; i < actionWeights.Length; i++){
             pointer += actionWeights[i];
             if (choiceVal < pointer){
                 intent = (Action)i;
@@ -118,36 +119,36 @@ public class Enemy : MonoBehaviour, IcombatFunction{
             }
         }
         intentValue = Random.Range(actionStrengths[(int)intent], Mathf.RoundToInt(actionStrengths[(int)intent] * 1.5f));
-        int targetGroup = 0; //0: player, 1: self, 2:other enemy
-        if(intent == Action.attack){
-             intentText.text = string.Format("Attacking {0} for {1}",BattleController.party[targetInd].name, intentValue);
-             
-        }else if(intent == Action.block){ 
-            targetGroup = 1;
-            intentText.text = string.Format("blocking for {0}", intentValue);
+        if(intent == Action.buff){ 
+            targetInd = Random.Range(0,BattleController.enemies.Count);
 
-        }else if(intent == Action.debuff){ 
-            intentText.text = string.Format("Debuffing {0}",BattleController.party[targetInd].name);
+        }else if(intent == Action.heal){
+            targetInd = Random.Range(0,BattleController.enemies.Count);
+        }
+        
+        intentionIcon.setIntentIcon((int) intent, intentValue, findTargetName());
+    }
+    
+
+    public void forceAction(int action){
+        intent = (Action) action;
+        intentValue = Random.Range(actionStrengths[(int)intent], Mathf.RoundToInt(actionStrengths[(int)intent] * 1.5f));
+        intentionIcon.setIntentIcon((int) intent, intentValue, findTargetName());
+    }    
+
+    private string findTargetName(){
+        int targetGroup = 0; //0: player, 1: self, 2:other enemy
+             
+        if(intent == Action.block){ 
+            targetGroup = 1;
 
         }else if(intent == Action.buff){ 
             targetInd = Random.Range(0,BattleController.enemies.Count);
             targetGroup = 2;
-            intentText.text = string.Format("Attacking {0} for {1} and blocking for {1}",BattleController.party[targetInd].name, intentValue);
 
-        }else if(intent == Action.attackBlock){ 
-            
-            intentText.text = string.Format("Attacking {0} for {1} and blocking for {1}",BattleController.party[targetInd].name, intentValue);
-
-        }else if(intent == Action.attackDebuff){ 
-            intentText.text = string.Format("Attacking {0} for {1} and applying a debuff", BattleController.party[targetInd].name, intentValue);
-
-        }else if(intent == Action.teamAttack){
-            intentText.text = string.Format("attacking All for {0}", intentValue);
-
-        }else{
+        }else if(intent == Action.heal){
             targetInd = Random.Range(0,BattleController.enemies.Count);
             targetGroup = 2;
-            intentText.text = string.Format("Healing index {0} for {1}", targetInd, intentValue);
         }
 
         string targetName = ""; 
@@ -159,43 +160,49 @@ public class Enemy : MonoBehaviour, IcombatFunction{
             if (BattleController.enemies[targetInd] == this){
                 targetName = "self";
             } else{
-                targetName = targetInd.ToString();
+                targetName = (targetInd+1).ToString();
             }
-
         }
-        
-        intentionIcon.setIntentIcon((int) intent, intentValue, targetName);
+        return targetName;
     }
 
     public void takeTurn(){
         targetInd = targetInd % BattleController.party.Count; //If the enemy's target has died before its turn, it will target the next hero, loops back to first
         if(intent == Action.attack){
+            animPlayer.SetTrigger("playAttack");
             attack(targetInd);
-        
+
         }else if(intent == Action.block){
+            animPlayer.SetTrigger("playBlock");
             defend(intentValue);
         
         }else if(intent == Action.debuff){
+            animPlayer.SetTrigger("playCast");
             BattleController.party[targetInd].applyStatus(debuffsCanApply[Random.Range(0,debuffsCanApply.Count)],intentValue, false);
         
         }else if(intent == Action.buff){ 
+            animPlayer.SetTrigger("playCast");
             targetInd = targetInd % BattleController.enemies.Count;
             BattleController.enemies[targetInd].applyStatus(buffsCanApply[Random.Range(0,buffsCanApply.Count)],intentValue, true);
 
         }else if(intent == Action.attackBlock){ 
+            animPlayer.SetTrigger("playAttack");
             attack(targetInd);
             defend(intentValue);
 
         }else if(intent == Action.attackDebuff){ 
+            animPlayer.SetTrigger("playAttack");
             attack(targetInd);
-            BattleController.party[targetInd].applyStatus(debuffsCanApply[Random.Range(0,debuffsCanApply.Count)],intentValue, false);
+            BattleController.party[targetInd].applyStatus(debuffsCanApply[Random.Range(0,debuffsCanApply.Count)],Random.Range(1,4), false);
         
         }else if(intent == Action.teamAttack){
+            animPlayer.SetTrigger("playAttack");
             for(int i = 0; i< BattleController.party.Count; i++){
                 attack(i);
             }
 
         }else{ //Heal
+            animPlayer.SetTrigger("playCast");
             targetInd = targetInd % BattleController.enemies.Count;
             BattleController.enemies[targetInd].heal(intentValue);
         }
@@ -226,7 +233,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
             s.updateCount(amount);
         }
         if (status == "weakened" & intent ==0){
-            intentText.text = string.Format("Attacking {0} for {1}",BattleController.party[targetInd].name,intentValue/2);
+            intentionIcon.updateDamageValue(intentValue/2);
         }
     }
 
@@ -264,6 +271,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     public void getHit(int amount, bool ignoreShield, string dmgType){//get hit for amount dmg. If the dmg source ignores shields it will deal directly to hp, weithout going through shield
         vfxPlayer.Reinit();
         vfxPlayer.SendEvent("OnGetHit");
+        animPlayer.SetTrigger("playGetHit");
         
         amount = dmgWeakness.Contains(dmgType) ? (int) (amount*1.5f) : amount;
         amount = dmgResist.Contains(dmgType) ? (int) (amount * 0.5f) : amount;
@@ -292,10 +300,15 @@ public class Enemy : MonoBehaviour, IcombatFunction{
         hpBar.setShield(shield);
     }
     public void die(){//removes enemy from list of active enemies and rotates it to show its dead
+    animPlayer.SetTrigger("playDead");
         BattleController.enemies.Remove(this);
         transform.eulerAngles = new Vector3(0,0,90);
         transform.GetChild(0).gameObject.SetActive(false);
         isDead = true;
+    }
+
+    public void removeStatuses(){
+        return;
     }
 }
 

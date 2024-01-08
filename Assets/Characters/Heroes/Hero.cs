@@ -161,4 +161,25 @@ public class Hero : MonoBehaviour, IcombatFunction
         transform.GetChild(0).gameObject.SetActive(false);
         isDead = true;
     }
+
+    public void forceAction(int action){
+        return;
+    }
+    public void removeStatuses(){
+        List<string> keys = new List<string>(statuses.Keys);
+        foreach(string key in keys){
+            if(key.Equals("poison")|key.Equals("weakened")|key.Equals("vulnerable")){
+                for(int i=0; i<statusBar.transform.childCount; i++){
+                    StatusCounter s = statusBar.transform.GetChild(i).GetComponent<StatusCounter>();
+                    if(s.name == key){
+                        s.updateCount(-(statuses[key]));
+                        break;
+                    }
+                }
+                statuses.Remove(key);
+            }
+        }
+        
+
+    }
 }

@@ -8,7 +8,8 @@ public class ambushTrigger : MonoBehaviour
 {
     public GameObject AmbushText;
     public Transform player;
-    public int numEnemies;
+    public GameObject[] encounterList;
+    public int enemyCount;
     private void Start()
     {
         AmbushText.SetActive(false);
@@ -21,7 +22,11 @@ public class ambushTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(2); //Waits for 2 seconds so player can read ambush text
         AmbushText.SetActive(false);
-        MovingScenes.instance.setNumberEnemies(numEnemies); // load data to singleton and move to battle scene 
+        GameObject[] eList = new GameObject[enemyCount];
+        for(int i = 0; i < enemyCount; i++){
+            eList[i] = encounterList[UnityEngine.Random.Range(0,encounterList.Length)];
+        }
+        MovingScenes.instance.setEnemyList(eList); // load data to singleton and move to battle scene 
         MovingScenes.instance.setPreCombatPosition(player.position);
         MovingScenes.instance.setCombatTrigger(name);
         SceneManager.LoadScene("BattleScene");

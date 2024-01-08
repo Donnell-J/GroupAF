@@ -10,7 +10,7 @@ public class BattleController : MonoBehaviour
     // 
     [SerializeField]
     public GameObject[] heroPrefabs; //List of hero Prefabs set in editor for instantiating players
-    public GameObject enemyPrefab; //For proto: single enemy type, will become List later on;
+    public GameObject[] enemyPrefab; //For proto: single enemy type, will become List later on;
     [SerializeField]
     public Transform handUI;
     public  GraphicRaycaster cardUIRaycaster;
@@ -31,13 +31,14 @@ public class BattleController : MonoBehaviour
 
     public GameObject combinationButton;
     public GameObject rewardScreen;
+    public CardViewMenu cardView;
     void Start()
     {   
-        enemyCount = MovingScenes.instance.getNumberEnemies();
         randomizeTurnOrder(); //randomize turn order for each combat so that it's not too repetetive
         party = new List<Hero>();
         enemies = new List<Enemy>();
         populateSides(); //Instanciate all necessary hero/enemy objects and scripts to populate party and enemies lists
+        cardView.initialise();
         StartCoroutine(Combat()); //Coroutine so that the function can wait until the player takes their turn for each hero
        
     }
@@ -146,6 +147,7 @@ public class BattleController : MonoBehaviour
         reloadCards();
     }
     private void populateSides(){
+
         Vector3 StartPos = new Vector3(-1,1,10); //Position and length of spawning line to dynamically position heroes
         Vector3 offset =new Vector3(-11,0,-12);
 
@@ -155,8 +157,10 @@ public class BattleController : MonoBehaviour
             Hero hScript = obj.GetComponent<Hero>();
             party.Add(hScript);
         }
-        for(int i=1;i<enemyCount +1;i++){
-            GameObject obj = Instantiate<GameObject>(enemyPrefab,transform.position,transform.rotation);
+        GameObject[] enemyList = MovingScenes.instance.getEnemyList();
+        for(int i=1;i<enemyList.Length +1;i++){
+
+            GameObject obj = Instantiate<GameObject>(enemyList[i-1],transform.position,transform.rotation);
             obj.transform.position=Vector3.Reflect(StartPos + i*(offset/(enemyCount+1)),Vector3.right); //Set position to opposite heroes
             Enemy eScript = obj.GetComponent<Enemy>();
             enemies.Add(eScript);

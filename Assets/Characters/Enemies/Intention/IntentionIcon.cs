@@ -41,22 +41,26 @@ public class IntentionIcon : MonoBehaviour
     }
 
     public void setIntentIcon(int action, int value, string targetName){
-        leftImg.sprite = null;
-        middleImg.sprite = null;
-        rightImg.sprite = null;
+        leftImg.enabled = false;
+        rightImg.enabled = false;
         leftVal.text  ="";
         middleVal.text = "";
         rightVal.text = "";
 
-        if(targetName.Contains("self")){
+        if(targetName.Contains("self") || action == 6){
             middleImg.sprite = findIntent(action);
             middleVal.text = value.ToString();
         } else{
+            leftImg.enabled = true;
+            rightImg.enabled = true;
             middleImg.sprite = targetIcon;
             leftImg.sprite = findIntent(action);
             leftVal.text = value.ToString();
+            if(action == 2 || action == 3){
+                leftVal.text = "";
+            }
 
-             if(targetName.Contains("Knight")){
+            if(targetName.Contains("Knight")){
                 rightImg.sprite = knightIcon;
 
             } else if(targetName.Contains("Wizard")){
@@ -69,16 +73,22 @@ public class IntentionIcon : MonoBehaviour
                 rightImg.sprite = clericIcon;
             }else{
                 rightImg.sprite = enemyIcon;
-                rightVal.text = targetName;
+                rightVal.text = "#" + targetName;
             }
 
         }
 
        
 
-        middleImg.sprite = targetIcon;
-
         
+    }
+
+    public void updateDamageValue(int newVal){
+        if(middleImg.sprite == teamAttackIcon){
+            middleVal.text = newVal.ToString();
+        }else if (leftImg.sprite == attackIcon ||leftImg.sprite == attackBlockIcon || leftImg.sprite == attackDebuffIcon){
+            leftVal.text = newVal.ToString();
+        }
     }
 
     public Sprite findIntent(int action){
