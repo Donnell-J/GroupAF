@@ -17,6 +17,7 @@ public class InteractSceneSwitch : MonoBehaviour
             startCombatMenu.SetActive(false); //Hide it's screen overlay until necessary 
             openMenu = false;
         }
+        Debug.Log(MovingScenes.instance == null);
         if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
             Destroy(this);
         }

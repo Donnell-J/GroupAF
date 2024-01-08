@@ -5,7 +5,7 @@ using System;
 public class MovingScenes: MonoBehaviour{
     public static MovingScenes instance; // static instance of the class that can be read by other scripts 
     public GameObject[] enemyList;
-    private Vector3 preCombatPosition = new Vector3(760,80,746);
+    private Vector3 preCombatPosition = new Vector3(32f,1.6f,8.5f);
     private Boolean combatSuccess;
     private List<string> triggeredCombats;
     public GameObject player;
@@ -16,6 +16,7 @@ public class MovingScenes: MonoBehaviour{
         if (instance == null)
         {
             instance = this;
+            triggeredCombats = new List<string>();
             DontDestroyOnLoad(gameObject);
         }
         else

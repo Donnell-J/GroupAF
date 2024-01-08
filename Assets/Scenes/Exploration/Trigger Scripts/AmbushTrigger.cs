@@ -13,7 +13,8 @@ public class ambushTrigger : MonoBehaviour
     private void Start()
     {
         AmbushText.SetActive(false);
-        if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
+        Debug.Log(MovingScenes.instance == null);
+        if (MovingScenes.instance.getTriggeredCombats().Contains(this.name)){ //If this obj has the same name as object thatr previously started combat, destroy it
             Destroy(this);
         }
     }
