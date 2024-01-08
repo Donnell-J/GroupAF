@@ -17,6 +17,7 @@ public class checkpointLoad : MonoBehaviour
         }else if(SceneManager.GetActiveScene().name.Equals("dungeon")){
             AudioManager.instance.musicSource.clip = AudioManager.instance.level3Music;
         }
+        MovingScenes.instance.onLoad();
     }
 
     // Update is called once per frame
