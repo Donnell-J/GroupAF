@@ -7,8 +7,7 @@ public class InteractSceneSwitch : MonoBehaviour
     public GameObject startCombatMenu;
     public Transform player;
     public Boolean openMenu;
-    public GameObject[] encounterList;
-    public int enemyCount;
+    public int numEnemies;
     
     private void Start()
     {
@@ -17,7 +16,7 @@ public class InteractSceneSwitch : MonoBehaviour
             startCombatMenu.SetActive(false); //Hide it's screen overlay until necessary 
             openMenu = false;
         }
-        if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
+        if (name.Equals(MovingScenes.instance.getCombatTrigger())){ //If this obj has the same name as object thatr previously started combat, destroy it
             Destroy(this);
         }
     }
@@ -39,11 +38,7 @@ public class InteractSceneSwitch : MonoBehaviour
     {
         Debug.Log("YES BUTTON CLICKED");
         openMenu = false;
-        GameObject[] eList = new GameObject[enemyCount];
-        for(int i = 0; i < enemyCount; i++){
-            eList[i] = encounterList[UnityEngine.Random.Range(0,encounterList.Length)];
-        }
-        MovingScenes.instance.setEnemyList(eList);
+        MovingScenes.instance.setNumberEnemies(numEnemies);
         MovingScenes.instance.setPreCombatPosition(player.position); //Load relevant data into singleton, switch to battle scene
         MovingScenes.instance.setCombatTrigger(name);
         SceneManager.LoadScene("BattleScene");
