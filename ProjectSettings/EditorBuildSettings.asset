@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Exploration/Exploration.unity
-    guid: 7b0f3ca79477eb744a67c451a921a380
   - enabled: 1
     path: Assets/Scenes/Combat/Level 1 BS.unity
     guid: fc79edd524b91a04e8de17c2455c61ba
@@ -23,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Exploration/Levels/dungeon.unity
     guid: fa5cf4359059d496a822decec99259f6
+  - enabled: 1
+    path: Assets/Scenes/Exploration/Levels/Intro.unity
+    guid: e24ecaa14b8266e4f961fa704aadafe0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
