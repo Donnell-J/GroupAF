@@ -17,6 +17,9 @@ public class BossTrigger : MonoBehaviour
 
     public Button yesButton;
     public TMP_Text yesButtonText;
+
+
+    public string battleName;
     
     private void Start()
     {
@@ -58,8 +61,9 @@ public class BossTrigger : MonoBehaviour
         openMenu = false;
         MovingScenes.instance.setEnemyList(encounterList);
         MovingScenes.instance.setPreCombatPosition(player.position); //Load relevant data into singleton, switch to battle scene
+        MovingScenes.instance.setFromScene(SceneManager.GetActiveScene().name);
         MovingScenes.instance.setCombatTrigger(name);
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene(battleName);
     }
     public void ButtonNoClicked()
     {

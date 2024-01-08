@@ -10,7 +10,9 @@ public class InteractSceneSwitch : MonoBehaviour
     public GameObject[] encounterList;
     public int enemyCount;
     public string item;
+    public ItemMenu itemMenu;
     
+    public string battleName;
     private void Start()
     {
         if (startCombatMenu != null)
@@ -20,6 +22,7 @@ public class InteractSceneSwitch : MonoBehaviour
         }
         Debug.Log(MovingScenes.instance == null);
         if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
+            itemMenu.showItemMenu(item);
             Destroy(this);
         }
     }
@@ -46,9 +49,10 @@ public class InteractSceneSwitch : MonoBehaviour
             eList[i] = encounterList[UnityEngine.Random.Range(0,encounterList.Length)];
         }
         MovingScenes.instance.setEnemyList(eList);
+        MovingScenes.instance.setFromScene(SceneManager.GetActiveScene().name);
         MovingScenes.instance.setPreCombatPosition(player.position); //Load relevant data into singleton, switch to battle scene
         MovingScenes.instance.setCombatTrigger(name);
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene(battleName);
     }
     public void ButtonNoClicked()
     {

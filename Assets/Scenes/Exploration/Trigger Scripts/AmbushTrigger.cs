@@ -11,11 +11,16 @@ public class ambushTrigger : MonoBehaviour
     public GameObject[] encounterList;
     public int enemyCount;
     public string item;
+
+    public ItemMenu itemMenu;
+
+    public string battleName;
     private void Start()
     {
         AmbushText.SetActive(false);
         Debug.Log(MovingScenes.instance == null);
         if (MovingScenes.instance.getTriggeredCombats().Contains(this.name)){ //If this obj has the same name as object thatr previously started combat, destroy it
+            itemMenu.showItemMenu(item);
             Destroy(this);
         }
     }
@@ -30,8 +35,9 @@ public class ambushTrigger : MonoBehaviour
         }
         MovingScenes.instance.setEnemyList(eList); // load data to singleton and move to battle scene 
         MovingScenes.instance.setPreCombatPosition(player.position);
+        MovingScenes.instance.setFromScene(SceneManager.GetActiveScene().name);
         MovingScenes.instance.setCombatTrigger(name);
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene(battleName);
     }
 
     void OnMouseDown(){

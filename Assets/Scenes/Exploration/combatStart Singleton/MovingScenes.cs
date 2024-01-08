@@ -12,7 +12,7 @@ public class MovingScenes: MonoBehaviour{
     private Vector3 leveldefaultPosition;
 
     private Boolean combatSuccess;
-    private Scene fromScene;
+    private string fromScene;
     private List<string> triggeredCombats;
     public GameObject player;
     // singeleton
@@ -68,10 +68,10 @@ public class MovingScenes: MonoBehaviour{
         return this.triggeredCombats;
     }
 
-    public void setFromScene(Scene s){
+    public void setFromScene(string s){
         this.fromScene = s;
     }
-    public Scene getFromScene(){
+    public string getFromScene(){
         return this.fromScene;
     }
 
