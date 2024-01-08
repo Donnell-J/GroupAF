@@ -34,6 +34,7 @@ public class BattleController : MonoBehaviour
     public CardViewMenu cardView;
     void Start()
     {   
+        AudioManager.instance.musicSource.clip = AudioManager.instance.combatMusic;
         randomizeTurnOrder(); //randomize turn order for each combat so that it's not too repetetive
         party = new List<Hero>();
         enemies = new List<Enemy>();
