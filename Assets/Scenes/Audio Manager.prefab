@@ -177,10 +177,10 @@ MonoBehaviour:
   musicSource: {fileID: 9059168901509527907}
   sfxSource: {fileID: 2586395471365042997}
   combatMusic: {fileID: 8300000, guid: 2d568fb4d3c214e499d86e5e6d496652, type: 3}
-  menuMusic: {fileID: 0}
-  level1Music: {fileID: 0}
-  level2Music: {fileID: 0}
-  level3Music: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: 1543167bc4858194c8fed59ad8446603, type: 3}
+  level1Music: {fileID: 8300000, guid: 78a677ee34da4774e8cb4d530f695c1a, type: 3}
+  level2Music: {fileID: 8300000, guid: a05db332ae5555045af2e9c2b108e6a0, type: 3}
+  level3Music: {fileID: 8300000, guid: ce56ad3d1466deb4da61d7adeafc8b4b, type: 3}
   interactSFX: {fileID: 0}
 --- !u!1 &6019779721533940456
 GameObject:
@@ -224,7 +224,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1543167bc4858194c8fed59ad8446603, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

@@ -10,6 +10,7 @@ public class ambushTrigger : MonoBehaviour
     public Transform player;
     public GameObject[] encounterList;
     public int enemyCount;
+    public string item;
     private void Start()
     {
         AmbushText.SetActive(false);

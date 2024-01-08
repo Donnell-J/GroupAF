@@ -19,7 +19,7 @@ public class MovingScenes: MonoBehaviour{
         if (instance == null)
         {
             instance = this;
-            triggeredCombats = new List<string>();
+            //triggeredCombats = new List<string>();
             DontDestroyOnLoad(gameObject);
         }
         else
