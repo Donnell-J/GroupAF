@@ -4,10 +4,10 @@ using UnityEngine;
 using System;
 public class MovingScenes: MonoBehaviour{
     public static MovingScenes instance; // static instance of the class that can be read by other scripts 
-    private int numberEnemies =3;
+    public GameObject[] enemyList;
     private Vector3 preCombatPosition = new Vector3(760,80,746);
     private Boolean combatSuccess;
-    private string combatTriggerName;
+    private List<string> triggeredCombats;
     public GameObject player;
     // singeleton
 
@@ -24,14 +24,14 @@ public class MovingScenes: MonoBehaviour{
         }
     }
     //getter for number of enemies
-    public int getNumberEnemies()
+    public GameObject[] getEnemyList()
     {
-        return numberEnemies;
+        return this.enemyList;
     }
     //setter for number of enemies
-    public void setNumberEnemies(int numberEnemies)
+    public void setEnemyList(GameObject[] enemies)
     {
-        this.numberEnemies = numberEnemies;
+        this.enemyList = enemies;
     }
     //getter for precombat position
     public Vector3 getPreCombatPosition()
@@ -55,10 +55,10 @@ public class MovingScenes: MonoBehaviour{
     }
     
     public void setCombatTrigger(string name){
-        this.combatTriggerName = name;
+        this.triggeredCombats.Add(name);
     }
-    public string getCombatTrigger(){
-        return this.combatTriggerName;
+    public List<string> getTriggeredCombats(){
+        return this.triggeredCombats;
     }
 
 }

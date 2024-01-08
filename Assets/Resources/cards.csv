@@ -1,47 +1,59 @@
 ﻿ID,title,description,img_path,base_value,targets,functions
-0,Sword Slash,Deal {0} slashing damage to chosen target.,,5,enemy,getHit
-1,Impale,Deal {0} piercing damage to chosen target.,,5,enemy,getHit
-2,Parry,Blocks {0} damage.,,5,self,defend
-3,Sever,Deal {0} slashing damage to chosen target.,,10,enemy,getHit
-4,Wreck,Deal {0} slashing damage to chosen target] become vulnerable.,,12.1.vulnerable,enemy.self,getHit.applyStatus
-5,Shield Bash,Deal {0} Slashing damage to target] Block {1} damage.,,5.5,enemy.self,getHit.defend
-6,Fortify,Blocks {0} damage.,,10,self,defend
-7,Rusty Blade,Deal {0} slashing damage to target] the target becomes weakened.,,5.1.weakened,enemy.enemy,getHit.applyStatus
-8,Dual Wield,Deal {0} slashing damage to chosen target.,,10,enemy,getHit
-400,Ravage,Deal {0} slashing damage to chosen target.,,15,enemy,getHit
-401,Reinforce,Blocks {0} damage] block isn't lost at the end of the turn.,,15.1.barricade,self.self,defend.applyStatus
+0,Sword Slash,Deal {0} slashing damage to chosen target.,CardArt/Slash,5.slashing,enemy,getHit
+1,Impale,Deal {0} piercing damage to chosen target.,CardArt/Impale,5.piercing,enemy,getHit
+2,Parry,Blocks {0} damage.,CardArt/Parry,5,self,defend
+3,Sever,Deal {0} slashing damage to chosen target.,CardArt/Sever,10.slashing,enemy,getHit
+4,Wreck,Deal {0} slashing damage to chosen target] become vulnerable.,CardArt/Wreck,12.slashing.1.vulnerable.false,enemy.self,getHit.applyStatus
+5,Shield Bash,Deal {0} Slashing damage to target] Block {2} damage.,CardArt/ShieldBash,5.slashing.5,enemy.self,getHit.defend
+6,Fortify,Blocks {0} damage.,CardArt/Fortify,10,self,defend
+7,Rusty Blade,Deal {0} slashing damage to target] the target becomes weakened.,CardArt/RustyBlade,5.slashing.1.weakened.false,enemy.enemy,getHit.applyStatus
+8,Dual Wield,Deal {0} slashing damage to chosen target.,CardArt/DualWield,10.slashing,enemy,getHit
+9,Staggering Parry,Target becomes vulnerable] gain {0} block.,CardArt/StaggeringParry,2.vulnerable.false.5,enemy.self,applyStatus.defend
+10,Boomerang Blade,Deal {0}slashing damage to target and {2} slashing damage to 2 random enemies.,CardArt/BoomerangBlade,3.slashing.3.slashing.3.slashing,enemy.randomEnemy.randomEnemy,getHit.getHit.getHit
+400,Ravage,Deal {0} slashing damage to chosen target.,CardArt/Ravage,15.slashing,enemy,getHit
+401,Reinforce,Blocks {0} damage] block isn't lost at the end of the turn.,CardArt/Reinforce,15.1.barricade.false,self.self,defend.applyStatus
+402,Concussive Smash,Deal {0} slashing damage to chosen target] the target becomes vulnerable.,CardArt/ConcussiveSmash,10.slashing.2.vulnerable.false,enemy.enemy,getHit.applyStatus
 ,,,,,,
-100,Pierce,Deal {0} piercing damage to chosen target.,,5,enemy,getHit
-101,Dagger Toss,Deal {0} piercing damage to chosen target.,,5,enemy,getHit
-102,Dodge,Blocks {0} damage.,,5,self,defend
-103,Headshot,Deal {0} piercing damage to chosen target.,,10,enemy,getHit
-104,Ankle Grazer,Deal {0} piercing damage and weakens the chosen target.,,4.1.weakened,enemy.enemy,getHit.applyStatus
-105,Poisoned Arrow,Deal {0} piercing damage] and applies {1} poison.,,5.3.poison,enemy.enemy,getHit.applyStatus
-106,Flaming Arrow,Deal {0} piercing damage to chosen target] and {1} damage to adjacent enemies.,,5.5,enemy.enemyAdjacent,getHit.getHit
-107,Shatter,Deal {0} piercing damage] become vulnerable.,,18.1.vulnerable,enemy.self,getHit.applyStatus
-108,Dagger Lunge,Deal {0} Piercing damage to target] Block {1} damage.,,5.5,enemy.self,getHit.defend
-500,Multishot,Deal {0} piercing damage to chosen target.,,15,enemy,getHit
-501,Stun Shot,Deal {0} piercing damage to chosen target. Stuns the target.,,5.1.stun,enemy.enemy,getHit.applyStatus
+100,Pierce,Deal {0} piercing damage to chosen target.,CardArt/Pierce,5.piercing,enemy,getHit
+101,Dagger Toss,Deal {0} piercing damage to chosen target.,CardArt/DaggerToss,5.piercing,enemy,getHit
+102,Dodge,Blocks {0} damage.,CardArt/Dodge,5,self,defend
+103,Headshot,Deal {0} piercing damage to chosen target.,CardArt/Headshot,10.piercing,enemy,getHit
+104,Ankle Grazer,Deal {0} piercing damage and weakens the chosen target.,CardArt/AnkleGrazer,4.piercing.1.weakened.false,enemy.enemy,getHit.applyStatus
+105,Poisoned Arrow,Deal {0} piercing damage] and applies {2} poison.,CardArt/PoisonedArrow,5.piercing.3.poison.false,enemy.enemy,getHit.applyStatus
+106,Flaming Arrow,Deal {0} piercing damage to chosen target] and {2} magic damage to adjacent enemies.,CardArt/FlamingArrow,5.piercing.5.magic,enemy.enemyAdjacent,getHit.getHit
+107,Shatter,Deal {0} piercing damage] become vulnerable.,CardArt/Shatter,18.piercing.1.vulnerable.false,enemy.self,getHit.applyStatus
+108,Dagger Lunge,Deal {0} piercing damage to target] Block {2} damage.,CardArt/DaggerLunge,5.piercing.5,enemy.self,getHit.defend
+109,Blind Justice,Deal {0} piercing damage to a random enemy.,CardArt/BlindJustice,7.piercing,randomEnemy,getHit
+110,Training Exercise,"Deal {0} piercing damage to chosen target, become strengthened",CardArt/TrainingExercise,5.piercing.2.stregthen.true,enemy.self,getHit.applyStatus
+500,Multishot,Deal {0} piercing damage to chosen target.,CardArt/Multishot,15.piercing,enemy,getHit
+501,Stun Shot,Deal {0} piercing damage to chosen target. Stuns the target.,CardArt/StunShot,5.piercing.1.stun.false,enemy.enemy,getHit.applyStatus
+502,Shot In The Dark,Deal {0} piercing damage to a random enemy.,CardArt/ShotInTheDark,20.piercing,randomEnemy,getHit
 ,,,,,,
-200,Magic Missile,Deal {0} magic damage to chosen target.,,5,enemy,getHit
-201,Reflect,Blocks {0} damage.,,5,self,defend
-202,Fireball,Deal {0} magic damage to target and {1} magic damage to adjacent enemies.,,7.3,enemy.enemyAdjacent,getHit.getHit
-203,Shield Wall,Blocks {0} damage for all Allies.,,3,team,defend
-204,Poison,Applies {0} poison to chosen target.,,3.poison,enemy,applyStatus
-205,Dark Truth,Weakens the chosen target and adjacent enemies for {0} turn(s).,,2.weakened.2.weakened,enemy.enemyAdjacent,applyStatus.applyStatus
-206,Poison Spray,Applies {0} poison to chosen target and adjacent enemies.,,2.poison,enemy.enemyAdjacent,applyStatus.applyStatus
-207,Life Leech, Deal {0} magic damage to target. Heal for {1} health.,,5.5,enemy.self,getHit.heal
-600,Lunar Missile,Deal {0} magic damage to chosen enemy,,15,enemy,getHit
-601,Eruption,Deal {0} magic damage to target and 5 magic damage to adjacent enemies.,,15.5,enemy.enemyAdjacent,getHit.getHit
+200,Magic Missile,Deal {0} magic damage to chosen target.,CardArt/MagicMissile,5.magic,enemy,getHit
+201,Reflect,Blocks {0} damage.,CardArt/Reflect,5,self,defend
+202,Fireball,Deal {0} magic damage to target and {2} magic damage to adjacent enemies.,CardArt/Fireball,7.magic.3.magic,enemy.enemyAdjacent,getHit.getHit
+203,Shield Wall,Blocks {0} damage for all Allies.,CardArt/ShieldWall,3,team,defend
+204,Poison,Applies {0} poison to chosen target.,CardArt/Poison,3.poison.false,enemy,applyStatus
+205,Dark Truth,Weakens the chosen target and adjacent enemies for {3} turn(s).,CardArt/DarkTruth,2.weakened.false.2.weakened.false,enemy.enemyAdjacent,applyStatus.applyStatus
+206,Poison Spray,Applies {0} poison to chosen target and adjacent enemies.,CardArt/PoisonSpray,2.poison.false.2.poison.false,enemy.enemyAdjacent,applyStatus.applyStatus
+207,Life Leech, Deal {0} magic damage to target. Heal for {2} health.,CardArt/LifeLeech,5.magic.5,enemy.self,getHit.heal
+208,Lightning Bolt,Deal {0} magic damage to target] target becomes weakened.,CardArt/LightningBolt,5.magic.3.weakened.false,enemy.enemy,getHit.applyStatus
+209,Magic Trick,Stun a random enemy.,CardArt/MagicTrick,1.stun.false,randomEnemy,applyStatus
+600,Lunar Missile,Deal {0} magic damage to chosen enemy,CardArt/LunarMissile,15.magic,enemy,getHit
+601,Eruption,Deal {0} magic damage to target and 5 magic damage to adjacent enemies.,CardArt/Eruption,15.magic.5.magic,enemy.enemyAdjacent,getHit.getHit
+602,Reaping Storm,Deal {0} magic damage to all enemies and heal for {2} health points.,CardArt/ReapingStorm,8.magic.15,allEnemies.self,getHit.heal
 ,,,,,,
-300,Magic Splash,Deal {0} magic damage to chosen target.,,4,enemy,getHit
-301,Smite,Deal {0} slashing damage on chosen target] the target becomes vulnerable.,,4.1.vulnerable,enemy.enemy,getHit.applyStatus
-302,Ward,Blocks {0} damage.,,5,self,defend
-303,Target Heal,Heals chosen ally {0} health points.,,8,ally,heal
-304,Exhaust,Weakens the chosen target for {0} turns.,,2.weakened,enemy,applyStatus
-305,Empower,Strengthens a chosen ally for {0} turns.,,2.strengthen,ally,applyStatus
-306,Paranoia,The chosen target becomes vulnerable and weakened for {0} turn(s).,,3.weakened.3.vulnerable,enemy.enemy,applyStatus.applyStatus
-307,Saviour,Heals a chosen ally {0} health.,,15,ally,heal
-308,Chosen's Light,Deal {0} magic damage to target.,,8,enemy,getHit
-700,Magic Wave,Deal {0} magic damage to chosen target.,,10,enemy,getHit
-701,Group Heal,Heals all allies {0} health each.,,6,team,heal
+300,Magic Splash,Deal {0} magic damage to chosen target.,CardArt/MagicSplash,4.magic,enemy,getHit
+301,Smite,Deal {0} slashing damage on chosen target] the target becomes vulnerable.,CardArt/Smite,4.slashing.1.vulnerable.false,enemy.enemy,getHit.applyStatus
+302,Ward,Blocks {0} damage.,CardArt/Ward,5,self,defend
+303,Target Heal,Heals chosen ally {0} health points.,CardArt/TargetHeal,8,ally,heal
+304,Exhaust,Weakens the chosen target for {0} turns.,CardArt/Exhaust,2.weakened.false,enemy,applyStatus
+305,Empower,Strengthens a chosen ally for {0} turns.,CardArt/Empower,2.strengthen.true,ally,applyStatus
+306,Paranoia,The chosen target becomes vulnerable and weakened for {0} turn(s).,CardArt/Paranoia,3.weakened.false.3.vulnerable.false,enemy.enemy,applyStatus.applyStatus
+307,Saviour,Heals a chosen ally {0} health.,CardArt/Saviour,15,ally,heal
+308,Chosen's Light,Deal {0} magic damage to target.,CardArt/Chosen'sLight,8.magic,enemy,getHit
+309,Atonement,Remove all debuffs on a chosen ally.,CardArt/Atonement,0,ally,removeStatuses
+310,Kneel,Force chosen enemy to {1}.,CardArt/Kneel,1.Block,enemy,forceAction
+700,Magic Wave,Deal {0} magic damage to chosen target.,CardArt/MagicWave,10.magic,enemy,getHit
+701,Group Heal,Heals all allies {0} health each.,CardArt/GroupHeal,6,team,heal
+702,Rally,Strengthens all allies for {0} turns.,CardArt/Rally,2.strengthen.true,team,applyStatus
