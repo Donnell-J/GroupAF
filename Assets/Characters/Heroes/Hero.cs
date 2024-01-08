@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 public class Hero : MonoBehaviour, IcombatFunction
 {
     // Start is called before the first frame update
     public StatusCounter statusCounter;
     public HPBar hpBar;
-    
+
+    public Animator animPlayer;
+    public VisualEffect vfxPlayer;
     public GameObject statusBar;
     [SerializeField]
     public int maxHP = 60;
@@ -71,7 +74,13 @@ public class Hero : MonoBehaviour, IcombatFunction
         }
     }
 
-    public void applyStatus(string status, int amount){
+    public void applyStatus(string status, int amount, bool isGood){
+        vfxPlayer.Reinit();
+        if(isGood){
+            vfxPlayer.SendEvent("OnBuff");
+        } else{
+            vfxPlayer.SendEvent("OnDebuff");
+        }
         try{//if the hero already has status applied, increase the amount of it, otherwise add the status to it's statuses dictionary. update/Create corresponding StatusCounter
             statuses[status] += amount;
             StatusCounter s = statusBar.transform.Find(status).GetComponent<StatusCounter>();
@@ -86,7 +95,7 @@ public class Hero : MonoBehaviour, IcombatFunction
     }
     public void resolveStatuses(){
         if(statuses.ContainsKey("poison")){//Poison deals dmg based on the number of stacks
-            getHit(statuses["poison"],true);
+            getHit(statuses["poison"],true,"poison");
         }
         if(!statuses.ContainsKey("barricade")){//barricade stops shield from being reset
             shield = 0;
@@ -110,10 +119,18 @@ public class Hero : MonoBehaviour, IcombatFunction
         }
     }
     public void heal(int amount){//increase hp by amount, can't go above max hp
+        vfxPlayer.Reinit();
+        vfxPlayer.SendEvent("OnHeal");
+
+
         currentHP = Mathf.Clamp(currentHP+amount,0,maxHP);
         hpBar.setHealth(currentHP);
     }
-   public void getHit(int amount, bool ignoreShield){//get hit for amount dmg. If the dmg source ignores shields it will deal directly to hp, weithout going through shield
+   public void getHit(int amount, bool ignoreShield, string dmgType){//get hit for amount dmg. If the dmg source ignores shields it will deal directly to hp, weithout going through shield
+        vfxPlayer.Reinit();
+        vfxPlayer.SendEvent("OnGetHit");
+        animPlayer.SetTrigger("playGetHit");
+
         if(ignoreShield){
             currentHP -= amount;
         }else{
@@ -132,13 +149,37 @@ public class Hero : MonoBehaviour, IcombatFunction
     }
 
     public void defend(int amount){
+        vfxPlayer.Reinit();
+        vfxPlayer.SendEvent("OnDefend");
+
         shield += amount;
         hpBar.setShield(shield);
     }
     public void die(){
         BattleController.party.Remove(this);
-        transform.eulerAngles = new Vector3(0,0,90); 
+        animPlayer.SetTrigger("playDead");
         transform.GetChild(0).gameObject.SetActive(false);
         isDead = true;
+    }
+
+    public void forceAction(int action){
+        return;
+    }
+    public void removeStatuses(){
+        List<string> keys = new List<string>(statuses.Keys);
+        foreach(string key in keys){
+            if(key.Equals("poison")|key.Equals("weakened")|key.Equals("vulnerable")){
+                for(int i=0; i<statusBar.transform.childCount; i++){
+                    StatusCounter s = statusBar.transform.GetChild(i).GetComponent<StatusCounter>();
+                    if(s.name == key){
+                        s.updateCount(-(statuses[key]));
+                        break;
+                    }
+                }
+                statuses.Remove(key);
+            }
+        }
+        
+
     }
 }
