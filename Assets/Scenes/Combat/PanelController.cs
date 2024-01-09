@@ -98,6 +98,7 @@ public class PanelController : MonoBehaviour
             heroHand.Remove(inputCards[1].ID);
             heroHand.Add(outputSlot.GetChild(0).GetComponent<cardOOC>().ID);
             bc.reloadCards(); //Reload cards in battle scene to reflect new hand state
+            BattleController.turnInProgress = true;
             ClosePanel();
         }
     }

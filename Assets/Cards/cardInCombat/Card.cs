@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 
@@ -19,9 +20,12 @@ public class Card : MonoBehaviour {
     public  float h;
     public float scale;
     public TMP_Text[] cardText;
+    public Image artImg;
+
     //public static bool isGlobalTargetting = false;
     private bool isTargetting = false;
     public LineRenderer lineRenderer;
+
 
     [SerializeField]
     private InputActionReference mousePos;
@@ -39,8 +43,7 @@ public class Card : MonoBehaviour {
         this.title = record[0];
         this.description = record[1];
         this.description = this.description.Replace("]",","); //Replaces arbitrary ] character with ',' as data is stored in a csv so ',' cannot be included in text
-        this.img_path = record[2]; //no effect as of prototype, will be used later for loading card art
-
+        this.img_path = record[2]; 
 
          //'.' character used in fields to create jagged Arrays so that enough paramters can be supplied when requirements are dynamic without overcomplicating the csv 
         foreach(string valString in record[3].Split(new char[] {'.'})){
@@ -52,6 +55,10 @@ public class Card : MonoBehaviour {
         foreach(string valString in record[5].Split(new char[] {'.'})){
             this.functions.Add(valString);
         }
+        this.description = description + "\nTargets: " +(this.targets[0].Contains("randomEnemy") ? "Enemy" : this.targets[0]);
+
+        //Load Art into the card
+        artImg.sprite = Resources.Load<Sprite>(this.img_path);
 
         //Loads text into the card
         cardText = GetComponentsInChildren<TMP_Text>();
@@ -79,16 +86,17 @@ public class Card : MonoBehaviour {
         if(Physics.Raycast(ray, out hit, 100)){
 
             if(targets[0]=="self" & hit.collider.transform == BattleController.party[BattleController.turnIndex].transform){
-                startCardExecution(BattleController.party[BattleController.turnIndex] as IcombatFunction);
+                StartCoroutine(startCardExecution(BattleController.party[BattleController.turnIndex] as IcombatFunction));
             }else if((targets[0] == "ally" | targets[0] == "team" )& hit.collider.TryGetComponent<Hero>(out mainHeroTarget)){
-                startCardExecution(mainHeroTarget);
-            }else if(targets[0]=="enemy" & hit.collider.TryGetComponent<Enemy>(out mainEnemyTarget)){
-                startCardExecution(mainEnemyTarget as IcombatFunction);
+                StartCoroutine(startCardExecution(mainHeroTarget));
+            }else if((targets[0]=="enemy" | targets[0] =="randomEnemy") & hit.collider.TryGetComponent<Enemy>(out mainEnemyTarget)){
+               StartCoroutine(startCardExecution(mainEnemyTarget as IcombatFunction));
             }
             
         }
     }
-    void startCardExecution(IcombatFunction mainTarget){
+    IEnumerator startCardExecution(IcombatFunction mainTarget){
+        var cardUser = BattleController.party[BattleController.turnIndex];
         int valIndex =0; //Current offset in base_values[] we need to start reading from for the current function
         for(int i = 0; i < functions.Count;i++){
             List<IcombatFunction> allTargets = new List<IcombatFunction>(); 
@@ -102,45 +110,87 @@ public class Card : MonoBehaviour {
                 Debug.Log(mainTargetPos);
                 if(mainTargetPos > 0){
                     allTargets.Add(BattleController.enemies[mainTargetPos-1] as IcombatFunction);
-                }if (mainTargetPos <BattleController.enemies.Count){
+                }if (mainTargetPos <BattleController.enemies.Count -1 ){
                     allTargets.Add(BattleController.enemies[mainTargetPos+1] as IcombatFunction);
                 }
             }else if(targets[i]=="self"){
-                allTargets.Add(BattleController.party[BattleController.turnIndex]);//Targets the hero who's turn it currently is
+                allTargets.Add(cardUser);//Targets the hero who's turn it currently is
             }else if(targets[i] == "enemy"){
                 allTargets.Add(mainEnemyTarget);//targets enemy from the raycast earlier
             }else if(targets[i] == "ally"){
                 allTargets.Add(mainHeroTarget);//targets hero from the raycast earlier
+            } else if(targets[i] == "randomEnemy"){
+                allTargets.Add(BattleController.enemies[UnityEngine.Random.Range(0,BattleController.enemies.Count)]);
             }
             string func = this.functions[i];
             if(func.Contains("getHit")){
-                foreach(IcombatFunction tgt in allTargets){
-                    int calcDmg = Convert.ToInt32(this.base_values[valIndex]); //Vals stored as Object, casts to integer
-                    if (BattleController.party[BattleController.turnIndex].statuses.ContainsKey("weakened")){
+                if( i==0){
+                    cardUser.animPlayer.SetInteger("attackAnim", UnityEngine.Random.Range(0,3));
+                    cardUser.animPlayer.SetTrigger("playAttack");
+                    yield return new WaitForSeconds(0.5f);
+                }
+                int calcDmg = Convert.ToInt32(this.base_values[valIndex]); //Vals stored as Object, casts to integer
+                    if (cardUser.statuses.ContainsKey("weakened")){
                         calcDmg /=2; //weakened halves dmg
                     }
-                    if (BattleController.party[BattleController.turnIndex].statuses.ContainsKey("strengthen")){
+                    if (cardUser.statuses.ContainsKey("strengthen")){
                         calcDmg *=2; //strengthen doubles dmg
                     }
-                        tgt.getHit(calcDmg,false); //hit the target without bypassing shields
-                }
-                valIndex++;//getHit only uses 1 param so next function starts +1 in 
-            }else if(func.Contains("applyStatus")){
+                
                 foreach(IcombatFunction tgt in allTargets){
-                    tgt.applyStatus(this.base_values[valIndex+1].ToString(),Convert.ToInt32(this.base_values[valIndex]));
+                        tgt.getHit(calcDmg,false, this.base_values[valIndex+1].ToString()); //hit the target without bypassing shields
                 }
-                valIndex +=2;//applyStatus uses 2 params, so increase index by 2
+                valIndex+= 2;//getHit only uses 1 param so next function starts +1 in 
+            }else if(func.Contains("applyStatus")){
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playStatus");
+                    yield return new WaitForSeconds(0.5f);
+                    
+                }
+                foreach(IcombatFunction tgt in allTargets){
+                    tgt.applyStatus(this.base_values[valIndex+1].ToString(),Convert.ToInt32(this.base_values[valIndex]),this.base_values[valIndex+2].ToString().Contains("true"));
+                }
+                valIndex +=3;//applyStatus uses 2 params, so increase index by 2
             }else if(func.Contains("defend")){
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playBlock");
+                    yield return new WaitForSeconds(0.5f);                    
+                }
                 foreach(IcombatFunction tgt in allTargets){
                     tgt.defend(Convert.ToInt32(this.base_values[valIndex]));
                 }
                 valIndex ++;
             }else if(func.Contains("heal")){
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playStatus");
+                    yield return new WaitForSeconds(0.5f);
+                }
                 foreach(IcombatFunction tgt in allTargets){
                     tgt.heal(Convert.ToInt32(this.base_values[valIndex]));
                 }
                 valIndex ++;
+            } else if(func.Contains("forceAction")){
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playStatus");
+                    yield return new WaitForSeconds(0.5f);
+                }
+                foreach(IcombatFunction tgt in allTargets){
+                    tgt.forceAction(Convert.ToInt32(this.base_values[valIndex]));
+                }
+                valIndex += 2;
+
+            }else if(func.Contains("removeStatuses")){
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playStatus");
+                    yield return new WaitForSeconds(0.5f);
+                }
+                foreach(IcombatFunction tgt in allTargets){
+                    tgt.removeNegativeStatuses();
+                }
+                valIndex += 2;
+
             }
+
         }
         BattleController.party[BattleController.turnIndex].discard(this.ID);//moves card played into discardPile
         BattleController.turnInProgress = true;//ends turn
@@ -178,7 +228,7 @@ public class Card : MonoBehaviour {
         for(int i = 0; i < 30; i++){ //Quadratic Bezier curve function to create a better set of points for the line
 			t = i / (30.0f-1.0f);
 			position = ((1.0f - t)*(1.0f - t)) * p0 + 2.0f * (1.0f - t) * t * p1 + t * t * p2;
-            
+            position.z = 1;
 			lineRenderer.SetPosition(i, position);
         }
     }

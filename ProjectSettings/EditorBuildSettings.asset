@@ -6,10 +6,34 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Exploration/Exploration.unity
-    guid: 7b0f3ca79477eb744a67c451a921a380
+    path: Assets/Scenes/Exploration/Levels/Start.unity
+    guid: 7b8c1f5a1eb7a9f4abdb3cecd9d59798
   - enabled: 1
-    path: Assets/Scenes/Combat/BattleScene.unity
+    path: Assets/Scenes/Combat/Level 1 BS.unity
     guid: fc79edd524b91a04e8de17c2455c61ba
+  - enabled: 1
+    path: Assets/Scenes/Exploration/Levels/Level2.unity
+    guid: fdac082531edf3849a560142fc0f2b1c
+  - enabled: 1
+    path: Assets/Scenes/Exploration/Levels/villageLevel.unity
+    guid: 7287c5de67f5e944ab7244f5657df267
+  - enabled: 1
+    path: Assets/Scenes/Exploration/Levels/dungeon.unity
+    guid: fa5cf4359059d496a822decec99259f6
+  - enabled: 1
+    path: Assets/Scenes/Exploration/Levels/Intro.unity
+    guid: e24ecaa14b8266e4f961fa704aadafe0
+  - enabled: 1
+    path: Assets/Scenes/Exploration/Levels/Credits.unity
+    guid: 9cba1c4945320ff4a9dfde694c713dc2
+  - enabled: 1
+    path: Assets/Scenes/Combat/Level 2 BS.unity
+    guid: 991f012351b3e5d40a5dcdf3fda2031b
+  - enabled: 1
+    path: Assets/Scenes/Combat/Level 3 BS.unity
+    guid: c27cf3301ada36a41aee0750b43747af
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 87edf7f523fd0f54989fe1a685736a84
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -15,10 +15,10 @@ public class RewardOptionView : MonoBehaviour
     public GameObject[] panels;
     public GameObject cardDefault;
     private int[] rewardIDs = new int[4];
-    private int[][] possibleDraws= {new int[]{3,8}, //Jagged of array of ID ranges that can be gained for each hero
-                         new int[]{103,108},
-                         new int[]{202,207},
-                         new int[]{303,308}}; 
+    private int[][] possibleDraws= {new int[]{3,10}, //Jagged of array of ID ranges that can be gained for each hero
+                         new int[]{103,110},
+                         new int[]{202,209},
+                         new int[]{303,310}}; 
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +64,8 @@ public class RewardOptionView : MonoBehaviour
         for (int i =0; i <4; i++){
             cardDB.instance.heroMaxHPs[i] += 5; //increases max hp of each hero by 5 for the next combat
         }
-        SceneManager.LoadScene("Exploration");//Sends us back to Exploration scene 
+        returnToGame();
+        //Sends us back to Exploration scene 
 
     }
 
@@ -72,7 +73,12 @@ public class RewardOptionView : MonoBehaviour
         for(int i = 0; i < 4; i++){
             cardDB.instance.heroDecks[i].Add(rewardIDs[i]);
         }
-        SceneManager.LoadScene("Exploration");//Sends us back to Exploration scene 
+        returnToGame();//Sends us back to Exploration scene 
+    }
+    public void returnToGame(){
+        string moveTo = MovingScenes.instance.getFromScene();
+        MovingScenes.instance.setFromScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(moveTo);
     }
 
 }

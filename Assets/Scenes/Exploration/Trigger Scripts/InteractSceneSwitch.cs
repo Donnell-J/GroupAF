@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,8 +8,12 @@ public class InteractSceneSwitch : MonoBehaviour
     public GameObject startCombatMenu;
     public Transform player;
     public Boolean openMenu;
-    public int numEnemies;
+    public GameObject[] encounterList;
+    public int enemyCount;
+    public string item;
+    public ItemMenu itemMenu;
     
+    public string battleName;
     private void Start()
     {
         if (startCombatMenu != null)
@@ -16,8 +21,12 @@ public class InteractSceneSwitch : MonoBehaviour
             startCombatMenu.SetActive(false); //Hide it's screen overlay until necessary 
             openMenu = false;
         }
-        if (name.Equals(MovingScenes.instance.getCombatTrigger())){ //If this obj has the same name as object thatr previously started combat, destroy it
-            Destroy(this);
+        if(MovingScenes.instance.getTriggeredCombats().Last().Equals(name)){
+            itemMenu.showItemMenu(item);
+            cardDB.instance.keyCount+=1;
+        }
+        if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
+            Destroy(gameObject);
         }
     }
 
@@ -25,7 +34,7 @@ public class InteractSceneSwitch : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if(Vector3.Distance(player.position,transform.position) <= 30){
+            if(Vector3.Distance(player.position,transform.position) <= 10){
                 Debug.Log(openMenu);
                 startCombatMenu.SetActive(true);//Show overlay if clicked on and player is close enough
                 openMenu = true;
@@ -38,10 +47,15 @@ public class InteractSceneSwitch : MonoBehaviour
     {
         Debug.Log("YES BUTTON CLICKED");
         openMenu = false;
-        MovingScenes.instance.setNumberEnemies(numEnemies);
+        GameObject[] eList = new GameObject[enemyCount];
+        for(int i = 0; i < enemyCount; i++){
+            eList[i] = encounterList[UnityEngine.Random.Range(0,encounterList.Length)];
+        }
+        MovingScenes.instance.setEnemyList(eList);
+        MovingScenes.instance.setFromScene(SceneManager.GetActiveScene().name);
         MovingScenes.instance.setPreCombatPosition(player.position); //Load relevant data into singleton, switch to battle scene
         MovingScenes.instance.setCombatTrigger(name);
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene(battleName);
     }
     public void ButtonNoClicked()
     {

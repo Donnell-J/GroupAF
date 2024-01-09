@@ -2,36 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement; 
 public class MovingScenes: MonoBehaviour{
     public static MovingScenes instance; // static instance of the class that can be read by other scripts 
-    private int numberEnemies =3;
-    private Vector3 preCombatPosition = new Vector3(760,80,746);
+    public GameObject[] enemyList;
+    private Vector3 preCombatPosition = Vector3.zero;
+    private Quaternion levelDefaultCameraRotation;
+
+    private Vector3 leveldefaultPosition;
+
     private Boolean combatSuccess;
-    private string combatTriggerName;
-    public GameObject player;
+    private string fromScene;
+    private List<string> triggeredCombats;
     // singeleton
 
      void Awake()
     {
+        string sName = SceneManager.GetActiveScene().name;
+        
         if (instance == null)
         {
             instance = this;
+            resetTriggers();
             DontDestroyOnLoad(gameObject);
         }
         else
         {
+            Debug.Log("instance exists in "+sName);
             Destroy(gameObject);
         }
     }
     //getter for number of enemies
-    public int getNumberEnemies()
+    public GameObject[] getEnemyList()
     {
-        return numberEnemies;
+        return this.enemyList;
     }
     //setter for number of enemies
-    public void setNumberEnemies(int numberEnemies)
+    public void setEnemyList(GameObject[] enemies)
     {
-        this.numberEnemies = numberEnemies;
+        this.enemyList = enemies;
     }
     //getter for precombat position
     public Vector3 getPreCombatPosition()
@@ -54,11 +63,36 @@ public class MovingScenes: MonoBehaviour{
         this.combatSuccess = combatSuccess;
     }
     
-    public void setCombatTrigger(string name){
-        this.combatTriggerName = name;
+    public void setCombatTrigger(string s){
+        this.triggeredCombats.Add(s);
     }
-    public string getCombatTrigger(){
-        return this.combatTriggerName;
+    public List<string> getTriggeredCombats(){
+        return this.triggeredCombats;
     }
 
+    public void setFromScene(string s){
+        this.fromScene = s;
+    }
+    public string getFromScene(){
+        return this.fromScene;
+    }
+
+    public void nextLevelStartPos(Vector3 pos){
+        this.leveldefaultPosition = pos;
+    }
+
+    public void setCameraRotation(Quaternion v){
+        this.levelDefaultCameraRotation = v;
+    }
+    public Quaternion getCameraRotation(){
+        return this.levelDefaultCameraRotation;
+    }
+    public void onLoad(){
+        this.preCombatPosition = this.leveldefaultPosition; 
+    }
+    public void resetTriggers(){
+        this.triggeredCombats = new List<string>();
+        this.triggeredCombats.Add("----");
+
+    }
 }
