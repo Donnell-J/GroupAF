@@ -10025,7 +10025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmbushText: {fileID: 499896559}
-  player: {fileID: 0}
+  player: {fileID: 345524797}
   encounterList:
   - {fileID: 4251401874852624592, guid: 7f96a8e24ce510b48918bfb4c3b5002e, type: 3}
   - {fileID: 4251401874852624592, guid: b155d8163f26f174e9d5027c21ba6158, type: 3}
@@ -26285,7 +26285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmbushText: {fileID: 499896559}
-  player: {fileID: 0}
+  player: {fileID: 345524797}
   encounterList:
   - {fileID: 4251401874852624592, guid: 7f96a8e24ce510b48918bfb4c3b5002e, type: 3}
   - {fileID: 4251401874852624592, guid: afa2b992d1dec7d4883ebe3cb28aefab, type: 3}
@@ -54065,7 +54065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCombatMenu: {fileID: 413266755}
-  player: {fileID: 0}
+  player: {fileID: 345524797}
   openMenu: 0
   encounterList:
   - {fileID: 4251401874852624592, guid: b155d8163f26f174e9d5027c21ba6158, type: 3}
