@@ -77,6 +77,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
 
     void Awake(){
         maxHP += Random.Range(-(maxHP/10),(maxHP/10));
+        Debug.Log("difficulty: "+ difficultyHPMulti[cardDB.instance.difficulty].ToString());
         maxHP = Mathf.RoundToInt(maxHP * difficultyHPMulti[cardDB.instance.difficulty]);
         currentHP = maxHP;
         hpBar.setMax(maxHP);
@@ -287,8 +288,8 @@ public class Enemy : MonoBehaviour, IcombatFunction{
             if(shield < 0){
                 currentHP +=shield;
                 shield = 0;
-            hpBar.setShield(shield);
         }
+        hpBar.setShield(shield);
         }
         if(currentHP <= 0){
             currentHP=0;

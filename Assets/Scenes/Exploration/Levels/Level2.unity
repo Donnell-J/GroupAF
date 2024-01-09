@@ -4718,7 +4718,7 @@ MonoBehaviour:
   - {fileID: 4251401874852624592, guid: e8a889e06f6c3944fb5b62460f135bef, type: 3}
   - {fileID: 4251401874852624592, guid: 6af784c2ce0710f44b6ad7a6c751cdda, type: 3}
   - {fileID: 4251401874852624592, guid: 7b24412c9fa9f0a40aaa93a98b6c3e24, type: 3}
-  nextScene: villageScene
+  nextScene: villageLevel
   nextPos: {x: 40, y: 2.6, z: -1}
   camRotation: {x: 0, y: 67.4, z: 0}
   yesButton: {fileID: 381545085}
@@ -84220,13 +84220,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993197434}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.7960077, y: 0.10049593, z: -0.41434243, w: 0.42964262}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50.11, y: -116.63, z: -162.2}
 --- !u!114 &1993197437
 MonoBehaviour:
   m_ObjectHideFlags: 0
