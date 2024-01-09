@@ -19,7 +19,8 @@ public class ambushTrigger : MonoBehaviour
     private void Start()
     {
         AmbushText.SetActive(false);
-        Debug.Log(MovingScenes.instance == null);
+        Debug.Log(MovingScenes.instance.getTriggeredCombats().Last());
+        Debug.Log(name);
         if(MovingScenes.instance.getTriggeredCombats().Last().Equals(name)){
             itemMenu.showItemMenu(item);
         }

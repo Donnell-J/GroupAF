@@ -19,9 +19,9 @@ public class ItemMenu : MonoBehaviour
     public GameObject menu;
     public TMP_Text title;
     public TMP_Text desc;
-    void Start()
+    void Awake()
     {
-        gameObject.SetActive(false);
+        menu.SetActive(false);
     }
 
     // Update is called once per frame
