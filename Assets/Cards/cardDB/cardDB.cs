@@ -9,6 +9,7 @@ public class cardDB : MonoBehaviour {
     public Dictionary<int,string[]> db = new Dictionary<int, string[]>(); 
     public Dictionary<int[], int> comboDB = new Dictionary<int[], int>();
     public int keyCount =0;
+    public int difficulty = 1;
 
     private int[][] startingDecks = {new int[]{0,0,0,0,1,1,2,2,2,2,2,3,4,5,6},
                                      new int[]{100,100,100,100,101,102,102,102,102,102,103,103,104,104,105},

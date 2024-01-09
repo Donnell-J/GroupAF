@@ -55,4 +55,8 @@ public class SettingsMenu : MonoBehaviour
         SettingsMenuIsOpen = false;
         glossaryMenu.GlossaryMenuIsOpen = true;
     }
+
+    public void setDifficulty(int level){
+        cardDB.instance.difficulty = level;
+    }
 }

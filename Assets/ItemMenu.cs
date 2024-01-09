@@ -38,7 +38,7 @@ public class ItemMenu : MonoBehaviour
         menu.SetActive(true);
         title.text = item;
         if(item.Equals("First Gold Coin")){
-            
+            itemIMG.sprite = coinImg;
             desc.text = "Ah the Captains first dabloon! He dug it up from far south with his crew back in '65. The dabloon's been in his pocket since the day he found it, how on earth did it fall out? The Captain believes that it's very lucky, maybe a few more dabloons will come flying your way!";
         }else if(item.Equals("Old Hook Hand")){
             itemIMG.sprite = hookImg;

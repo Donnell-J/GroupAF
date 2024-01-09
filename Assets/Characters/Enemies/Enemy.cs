@@ -57,6 +57,8 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     //HP AND STATS
     [SerializeField]
     public int maxHP = 60; //Amount of hp the enemy starts with
+
+    public float[] difficultyHPMulti = new float[]{0.5f,1f,1.75f};
     [SerializeField]
     private int currentHP;
     public List<string> dmgResist; //damage of this type is halved against the enemy
@@ -71,8 +73,11 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     int targetInd;
 
     int intentValue;
+
+
     void Awake(){
         maxHP += Random.Range(-(maxHP/10),(maxHP/10));
+        maxHP = Mathf.RoundToInt(maxHP * difficultyHPMulti[cardDB.instance.difficulty]);
         currentHP = maxHP;
         hpBar.setMax(maxHP);
         personalityType = Random.Range(0,3);

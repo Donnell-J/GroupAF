@@ -23,6 +23,7 @@ public class InteractSceneSwitch : MonoBehaviour
         }
         if(MovingScenes.instance.getTriggeredCombats().Last().Equals(name)){
             itemMenu.showItemMenu(item);
+            cardDB.instance.keyCount+=1;
         }
         if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
             Destroy(gameObject);

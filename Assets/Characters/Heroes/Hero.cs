@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +31,8 @@ public class Hero : MonoBehaviour, IcombatFunction
     public GameObject currentArrow; 
        
     void Awake(){
-        List<int> d = cardDB.instance.heroDecks[heroID]; //Get deck from Card DB singleton
+        List<int> d = cardDB.instance.heroDecks[heroID].ToList(); //Get deck from Card DB singleton
+        Debug.Log(cardDB.instance.heroDecks[heroID].Count);
         currentDeck = d;
         maxHP = cardDB.instance.heroMaxHPs[heroID]; ///get maxHP from static variable in cardDB singleton so that it persists between instances
         currentHP= maxHP;
