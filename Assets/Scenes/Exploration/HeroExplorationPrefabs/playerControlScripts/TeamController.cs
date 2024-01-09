@@ -15,18 +15,18 @@ public class TeamController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent.destination = mTarget.position;
+        agent.speed = mSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(mTarget.position);
-        if ((transform.position - mTarget.position).magnitude > EPSILON)
-        {
-            transform.Translate(0.0f, 0.0f, (mSpeed * Time.deltaTime));
-            anim.SetFloat("Velocity",1f);
+            anim.SetFloat("Velocity",agent.velocity.magnitude);
+        if ((transform.position - mTarget.position).magnitude < EPSILON){
+            agent.destination = transform.position;
         }else{
-            anim.SetFloat("Velocity",0f);
+            agent.destination = transform.position;
         }
 
     }

@@ -24,7 +24,7 @@
 107,Shatter,Deal {0} piercing damage] become vulnerable.,CardArt/Shatter,18.piercing.1.vulnerable.false,enemy.self,getHit.applyStatus
 108,Dagger Lunge,Deal {0} piercing damage to target] Block {2} damage.,CardArt/DaggerLunge,5.piercing.5,enemy.self,getHit.defend
 109,Blind Justice,Deal {0} piercing damage to a random enemy.,CardArt/BlindJustice,7.piercing,randomEnemy,getHit
-110,Training Exercise,"Deal {0} piercing damage to chosen target, become strengthened",CardArt/TrainingExercise,5.piercing.2.stregthen.true,enemy.self,getHit.applyStatus
+110,Training Exercise,Deal {0} piercing damage to chosen target] become strengthened,CardArt/TrainingExercise,5.piercing.2.stregthen.true,enemy.self,getHit.applyStatus
 500,Multishot,Deal {0} piercing damage to chosen target.,CardArt/Multishot,15.piercing,enemy,getHit
 501,Stun Shot,Deal {0} piercing damage to chosen target. Stuns the target.,CardArt/StunShot,5.piercing.1.stun.false,enemy.enemy,getHit.applyStatus
 502,Shot In The Dark,Deal {0} piercing damage to a random enemy.,CardArt/ShotInTheDark,20.piercing,randomEnemy,getHit

@@ -78,17 +78,20 @@ public class PanelController : MonoBehaviour
         int[] cardIDtoCheck = new int[]{inputCards[0].ID,inputCards[1].ID}; //Create new int array of selected card IDs
 
         foreach(int[] key in cardDB.instance.comboDB.Keys){ //Loop through each combination in the singleton comboDB
-            if(key.Except(cardIDtoCheck).Count() == 0){ //If there is no difference in the array of selected IDs and the requirements, instance a new card with the Id of the resulting card 
+            if(cardIDtoCheck.All(key.Contains)){ //If there is no difference in the array of selected IDs and the requirements, instance a new card with the Id of the resulting card 
                 cardOOC card = Instantiate(cardOOC).GetComponent<cardOOC>(); 
                 card.ID = cardDB.instance.comboDB[key];
                 Debug.Log(card.ID);//
                     if (outputSlot.childCount > 0){
-                        outputSlot.GetChild(0).GetComponent<cardOOC>().destroy();//
+                        outputSlot.GetChild(0).GetComponent<cardOOC>().destroy();
                 }
                 card.transform.SetParent(outputSlot, false);
                 return;
             }
         }   
+        if (outputSlot.childCount > 0){
+            outputSlot.GetChild(0).GetComponent<cardOOC>().destroy();
+        }
     }
 
     public void onConfirm(){ 
