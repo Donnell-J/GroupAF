@@ -8080,9 +8080,9 @@ Transform:
   m_GameObject: {fileID: 274951546}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalScale: {x: 1.34, y: 1.34, z: 1.34}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1114318327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10032,7 +10032,7 @@ MonoBehaviour:
   - {fileID: 4251401874852624592, guid: afa2b992d1dec7d4883ebe3cb28aefab, type: 3}
   enemyCount: 2
   item: Unholy Water
-  itemMenu: {fileID: 401485613}
+  itemMenu: {fileID: 3336762243808872108}
   battleName: Level 3 BS
 --- !u!4 &336473053
 Transform:
@@ -12358,17 +12358,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4742819312605197066, guid: b188468ec4a45c6409d40013b262389f, type: 3}
   m_PrefabInstance: {fileID: 395593545}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &401485613 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4310127526907124308, guid: 0d8b84f3c460fe64e9d7ef78cb3f0f8b, type: 3}
-  m_PrefabInstance: {fileID: 3336762243808872107}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0105cb82806397f4ba1c64fb6a18c326, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &404590609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26292,7 +26281,7 @@ MonoBehaviour:
   - {fileID: 4251401874852624592, guid: b155d8163f26f174e9d5027c21ba6158, type: 3}
   enemyCount: 3
   item: Dark Gem
-  itemMenu: {fileID: 401485613}
+  itemMenu: {fileID: 3336762243808872108}
   battleName: Level 3 BS
 --- !u!4 &853729975
 Transform:
@@ -34773,15 +34762,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5190005327370688778, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5190005327370688778, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5190005327370688778, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5190005327370688778, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34789,7 +34778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5190005327370688778, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.06
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 5190005327370688778, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34906,8 +34895,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Size: {x: 4, y: 4, z: 2}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &1114394649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40536,6 +40525,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 1114318327}
     m_Modifications:
     - target: {fileID: 5155634617982720579, guid: 7d7532e5e9979ed42baa83a97971083a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 61.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155634617982720579, guid: 7d7532e5e9979ed42baa83a97971083a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 61.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155634617982720579, guid: 7d7532e5e9979ed42baa83a97971083a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 61.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155634617982720579, guid: 7d7532e5e9979ed42baa83a97971083a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -40565,7 +40566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5155634617982720579, guid: 7d7532e5e9979ed42baa83a97971083a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5155634617982720579, guid: 7d7532e5e9979ed42baa83a97971083a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -40573,7 +40574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5155634617982720579, guid: 7d7532e5e9979ed42baa83a97971083a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 322.45334
       objectReference: {fileID: 0}
     - target: {fileID: 5532583022024540409, guid: 7d7532e5e9979ed42baa83a97971083a, type: 3}
       propertyPath: m_Name
@@ -54073,7 +54074,7 @@ MonoBehaviour:
   - {fileID: 4251401874852624592, guid: 7f96a8e24ce510b48918bfb4c3b5002e, type: 3}
   enemyCount: 2
   item: Soul In A Bottle
-  itemMenu: {fileID: 401485613}
+  itemMenu: {fileID: 3336762243808872108}
   battleName: Level 3 BS
 --- !u!4 &1709137609
 Transform:
@@ -67608,6 +67609,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d8b84f3c460fe64e9d7ef78cb3f0f8b, type: 3}
+--- !u!114 &3336762243808872108 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5194798674322824510, guid: 0d8b84f3c460fe64e9d7ef78cb3f0f8b, type: 3}
+  m_PrefabInstance: {fileID: 3336762243808872107}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0105cb82806397f4ba1c64fb6a18c326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15896621, g: 0.51753515, b: 1.0392404, a: 1}
+  m_IndirectSpecularColor: {r: 0.16007265, g: 0.5168968, b: 1.04459, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4685,6 +4685,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6445967681475011022, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
       insertIndex: -1
       addedObject: {fileID: 122905496}
+    - targetCorrespondingSourceObject: {fileID: 6445967681475011022, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 122905497}
   m_SourcePrefab: {fileID: 100100000, guid: 08ede360b83d3d940b3de2deeb679007, type: 3}
 --- !u!1 &122905494 stripped
 GameObject:
@@ -4721,6 +4724,27 @@ MonoBehaviour:
   yesButton: {fileID: 381545085}
   yesButtonText: {fileID: 1133344225}
   battleName: Level 1 BS
+--- !u!65 &122905497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122905494}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.25, y: 1.25, z: 1.25}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &123064671
 GameObject:
   m_ObjectHideFlags: 0
@@ -47286,6 +47310,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5194798674322824510, guid: 0d8b84f3c460fe64e9d7ef78cb3f0f8b, type: 3}
+      propertyPath: itemIMG
+      value: 
+      objectReference: {fileID: 1114083079}
     - target: {fileID: 5357410025112978294, guid: 0d8b84f3c460fe64e9d7ef78cb3f0f8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -47384,6 +47412,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0105cb82806397f4ba1c64fb6a18c326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1114083079 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6996609182284739581, guid: 0d8b84f3c460fe64e9d7ef78cb3f0f8b, type: 3}
+  m_PrefabInstance: {fileID: 1114083077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1114272943

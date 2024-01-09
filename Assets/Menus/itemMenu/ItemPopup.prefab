@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0105cb82806397f4ba1c64fb6a18c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIMG: {fileID: 6996609182284739581}
   coinImg: {fileID: 21300000, guid: a6531423a9499a0499487987dd7deb99, type: 3}
   hookImg: {fileID: 21300000, guid: 3b01281270e51fb47941b0ec79739921, type: 3}
   mapImg: {fileID: 21300000, guid: 1ffd2e6ad24385a4082dc30c6c3ec2be, type: 3}
