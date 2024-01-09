@@ -110,7 +110,7 @@ public class Card : MonoBehaviour {
                 Debug.Log(mainTargetPos);
                 if(mainTargetPos > 0){
                     allTargets.Add(BattleController.enemies[mainTargetPos-1] as IcombatFunction);
-                }if (mainTargetPos <BattleController.enemies.Count){
+                }if (mainTargetPos <BattleController.enemies.Count -1 ){
                     allTargets.Add(BattleController.enemies[mainTargetPos+1] as IcombatFunction);
                 }
             }else if(targets[i]=="self"){
@@ -129,14 +129,15 @@ public class Card : MonoBehaviour {
                     cardUser.animPlayer.SetTrigger("playAttack");
                     yield return new WaitForSeconds(0.5f);
                 }
-                foreach(IcombatFunction tgt in allTargets){
-                    int calcDmg = Convert.ToInt32(this.base_values[valIndex]); //Vals stored as Object, casts to integer
+                int calcDmg = Convert.ToInt32(this.base_values[valIndex]); //Vals stored as Object, casts to integer
                     if (cardUser.statuses.ContainsKey("weakened")){
                         calcDmg /=2; //weakened halves dmg
                     }
                     if (cardUser.statuses.ContainsKey("strengthen")){
                         calcDmg *=2; //strengthen doubles dmg
                     }
+                
+                foreach(IcombatFunction tgt in allTargets){
                         tgt.getHit(calcDmg,false, this.base_values[valIndex+1].ToString()); //hit the target without bypassing shields
                 }
                 valIndex+= 2;//getHit only uses 1 param so next function starts +1 in 
@@ -178,7 +179,18 @@ public class Card : MonoBehaviour {
                 }
                 valIndex += 2;
 
+            }else if(func.Contains("removeStatuses")){
+                if( i==0){
+                    cardUser.animPlayer.SetTrigger("playStatus");
+                    yield return new WaitForSeconds(0.5f);
+                }
+                foreach(IcombatFunction tgt in allTargets){
+                    tgt.removeNegativeStatuses();
+                }
+                valIndex += 2;
+
             }
+
         }
         BattleController.party[BattleController.turnIndex].discard(this.ID);//moves card played into discardPile
         BattleController.turnInProgress = true;//ends turn

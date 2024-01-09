@@ -307,7 +307,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
         isDead = true;
     }
 
-    public void removeStatuses(){
+    public void removeNegativeStatuses(){
         return;
     }
 }

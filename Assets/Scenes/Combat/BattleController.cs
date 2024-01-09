@@ -117,15 +117,16 @@ public class BattleController : MonoBehaviour
                 foreach(Enemy enemy in enemies.ToList()){
                     yield return new WaitForSeconds(1);
                     enemy.resolveStatuses();
-                    if(!enemy.isDead & !enemy.isStunned){
+                    if(!(enemy.isDead | enemy.isStunned)){
                         enemy.takeTurn();
                     }
                     enemy.isStunned = false;
                     enemy.reduceStatuses();
-                        if(party.Count ==0){
-                            finished = true;
-                            break;
-                        }
+                    if(party.Count ==0 | enemies.Count ==0){
+                        finished = true;
+                        break;
+                    }
+                
                 }
                 toggleUI();
             }

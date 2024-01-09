@@ -165,7 +165,7 @@ public class Hero : MonoBehaviour, IcombatFunction
     public void forceAction(int action){
         return;
     }
-    public void removeStatuses(){
+    public void removeNegativeStatuses(){
         List<string> keys = new List<string>(statuses.Keys);
         foreach(string key in keys){
             if(key.Equals("poison")|key.Equals("weakened")|key.Equals("vulnerable")){

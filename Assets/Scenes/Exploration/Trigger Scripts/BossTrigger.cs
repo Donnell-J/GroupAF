@@ -28,7 +28,7 @@ public class BossTrigger : MonoBehaviour
             startCombatMenu.SetActive(false); //Hide it's screen overlay until necessary 
             openMenu = false;
         }
-        if (MovingScenes.instance.getTriggeredCombats().Contains(gameObject)){ //If this obj has the same name as object thatr previously started combat, destroy it
+        if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
             MovingScenes.instance.nextLevelStartPos(nextPos);
             MovingScenes.instance.setCameraRotation(Quaternion.Euler(camRotation));
             cardDB.instance.nextLevelSave();
@@ -61,7 +61,7 @@ public class BossTrigger : MonoBehaviour
         MovingScenes.instance.setEnemyList(encounterList);
         MovingScenes.instance.setPreCombatPosition(player.position); //Load relevant data into singleton, switch to battle scene
         MovingScenes.instance.setFromScene(SceneManager.GetActiveScene().name);
-        MovingScenes.instance.setCombatTrigger(gameObject);
+        MovingScenes.instance.setCombatTrigger(name);
         SceneManager.LoadScene(battleName);
     }
     public void ButtonNoClicked()

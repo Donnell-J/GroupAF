@@ -10,9 +10,11 @@ public class checkpointLoad : MonoBehaviour
         string sName = SceneManager.GetActiveScene().name;
         AudioManager.instance.updateSong(sName);
         string lScene = MovingScenes.instance.getFromScene();
+
         if(!(lScene.Equals("Level 1 BS") | lScene.Equals("Level 2 BS") | lScene.Equals("Level 3 BS"))){
             Debug.Log("Must load deck");
             cardDB.instance.loadSaveState();
+            MovingScenes.instance.resetTriggers();
         }
         
         //Debug.Log(MovingScenes.instance.getPreCombatPosition());

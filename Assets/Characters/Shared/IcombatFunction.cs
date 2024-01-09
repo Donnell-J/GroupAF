@@ -9,6 +9,6 @@ public interface IcombatFunction{
     void defend(int amount);
     void forceAction(int action);
 
-    void removeStatuses();
+    void removeNegativeStatuses();
     
 }

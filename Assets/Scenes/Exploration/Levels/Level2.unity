@@ -4712,7 +4712,7 @@ MonoBehaviour:
   player: {fileID: 1678364841}
   openMenu: 0
   encounterList:
-  - {fileID: 919132149155446097, guid: dd0a22dd03530c343923f0ce647f0667, type: 3}
+  - {fileID: 4251401874852624592, guid: e8a889e06f6c3944fb5b62460f135bef, type: 3}
   - {fileID: 4251401874852624592, guid: 6af784c2ce0710f44b6ad7a6c751cdda, type: 3}
   - {fileID: 4251401874852624592, guid: 7b24412c9fa9f0a40aaa93a98b6c3e24, type: 3}
   nextScene: villageScene
@@ -18123,7 +18123,7 @@ MonoBehaviour:
   player: {fileID: 1678364841}
   openMenu: 0
   encounterList:
-  - {fileID: 919132149155446097, guid: dd0a22dd03530c343923f0ce647f0667, type: 3}
+  - {fileID: 4251401874852624592, guid: e8a889e06f6c3944fb5b62460f135bef, type: 3}
   - {fileID: 4251401874852624592, guid: 7b24412c9fa9f0a40aaa93a98b6c3e24, type: 3}
   - {fileID: 4251401874852624592, guid: b98a740d902e0014ca45115c689f1e91, type: 3}
   enemyCount: 2
@@ -19605,7 +19605,7 @@ MonoBehaviour:
   AmbushText: {fileID: 732359182}
   player: {fileID: 1678364841}
   encounterList:
-  - {fileID: 919132149155446097, guid: dd0a22dd03530c343923f0ce647f0667, type: 3}
+  - {fileID: 4251401874852624592, guid: e8a889e06f6c3944fb5b62460f135bef, type: 3}
   - {fileID: 4251401874852624592, guid: 7b24412c9fa9f0a40aaa93a98b6c3e24, type: 3}
   - {fileID: 4251401874852624592, guid: b98a740d902e0014ca45115c689f1e91, type: 3}
   enemyCount: 3
@@ -24524,7 +24524,7 @@ MonoBehaviour:
   AmbushText: {fileID: 732359182}
   player: {fileID: 1678364841}
   encounterList:
-  - {fileID: 919132149155446097, guid: dd0a22dd03530c343923f0ce647f0667, type: 3}
+  - {fileID: 4251401874852624592, guid: e8a889e06f6c3944fb5b62460f135bef, type: 3}
   - {fileID: 4251401874852624592, guid: 7b24412c9fa9f0a40aaa93a98b6c3e24, type: 3}
   - {fileID: 4251401874852624592, guid: b98a740d902e0014ca45115c689f1e91, type: 3}
   enemyCount: 1
