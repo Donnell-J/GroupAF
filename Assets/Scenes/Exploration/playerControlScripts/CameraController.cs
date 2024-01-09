@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         if(MovingScenes.instance.getPreCombatPosition() != Vector3.zero){
-            transform.position = MovingScenes.instance.getPreCombatPosition();
+            gameObject.transform.position = MovingScenes.instance.getPreCombatPosition();
         }
         //transform.rotation = MovingScenes.instance.getCameraRotation();
     }

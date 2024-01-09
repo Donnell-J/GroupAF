@@ -18,6 +18,7 @@ public class GameOver : MonoBehaviour
     }
 
     public void reload(){
+        MovingScenes.instance.setFromScene("gameOver");
         SceneManager.LoadScene(MovingScenes.instance.getFromScene());
     }
     public void quit(){

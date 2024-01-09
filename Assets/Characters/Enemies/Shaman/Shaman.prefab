@@ -198,7 +198,7 @@ MonoBehaviour:
   animPlayer: {fileID: 1477464407781690153}
   intentionIcon: {fileID: 2678424984678537345}
   statusBar: {fileID: 7673425251200138013}
-  Name: Orc
+  Name: Shaman
   nameBar: {fileID: 2690448257233941433}
   baseActionWeights: 00000000140000003c0000000000000000000000000000000000000014000000
   actionStrengths: 0000000006000000020000000000000000000000000000000000000004000000
@@ -208,6 +208,10 @@ MonoBehaviour:
   - strengthen
   personalityType: 0
   maxHP: 25
+  difficultyHPMulti:
+  - 0.5
+  - 1
+  - 1.75
   currentHP: 0
   dmgResist:
   - magic

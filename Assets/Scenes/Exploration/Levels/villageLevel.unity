@@ -21548,7 +21548,7 @@ RectTransform:
   - {fileID: 2048402270}
   - {fileID: 2116825949}
   - {fileID: 1529111608}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1486080305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -26613,7 +26613,7 @@ Transform:
   m_GameObject: {fileID: 1205496316}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.55484444, z: 0, w: -0.8319541}
-  m_LocalPosition: {x: 38.49131, y: 2.6, z: -1.8728299}
+  m_LocalPosition: {x: 45.26, y: 2.6, z: 1.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32421,8 +32421,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractScene, Assembly-CSharp
+      - m_Target: {fileID: 630949485}
+        m_TargetAssemblyTypeName: BossTrigger, Assembly-CSharp
         m_MethodName: ButtonNoClicked
         m_Mode: 1
         m_Arguments:
@@ -32525,6 +32525,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 933852052}
   - {fileID: 688775723}
   - {fileID: 2057072894}
   m_Father: {fileID: 0}
@@ -37565,8 +37566,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractScene, Assembly-CSharp
+      - m_Target: {fileID: 630949485}
+        m_TargetAssemblyTypeName: BossTrigger, Assembly-CSharp
         m_MethodName: ButtonYesClicked
         m_Mode: 1
         m_Arguments:
@@ -45450,8 +45451,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractScene, Assembly-CSharp
+      - m_Target: {fileID: 1486080304}
+        m_TargetAssemblyTypeName: InteractSceneSwitch, Assembly-CSharp
         m_MethodName: ButtonYesClicked
         m_Mode: 1
         m_Arguments:
@@ -47452,8 +47453,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractScene, Assembly-CSharp
+      - m_Target: {fileID: 1486080304}
+        m_TargetAssemblyTypeName: InteractSceneSwitch, Assembly-CSharp
         m_MethodName: ButtonNoClicked
         m_Mode: 1
         m_Arguments:
@@ -48262,7 +48263,6 @@ SceneRoots:
   - {fileID: 430318400}
   - {fileID: 1909353862}
   - {fileID: 1955709185}
-  - {fileID: 933852052}
   - {fileID: 1836650463}
   - {fileID: 1273290916}
   - {fileID: 1282017099}

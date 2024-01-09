@@ -15,10 +15,10 @@ public class RewardOptionView : MonoBehaviour
     public GameObject[] panels;
     public GameObject cardDefault;
     private int[] rewardIDs = new int[4];
-    private int[][] possibleDraws= {new int[]{3,8}, //Jagged of array of ID ranges that can be gained for each hero
-                         new int[]{103,108},
-                         new int[]{202,207},
-                         new int[]{303,308}}; 
+    private int[][] possibleDraws= {new int[]{3,10}, //Jagged of array of ID ranges that can be gained for each hero
+                         new int[]{103,110},
+                         new int[]{202,209},
+                         new int[]{303,310}}; 
     // Start is called before the first frame update
     void Start()
     {

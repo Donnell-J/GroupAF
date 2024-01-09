@@ -99,7 +99,7 @@ public class BattleController : MonoBehaviour
 
 
                 if(hero.hand.Count ==0 | hero.isDead){
-                    turnInProgress = true; //turnInProgress controls the current turn, if it's set to true, the current turn is skipped as it's only set true from playing cards
+                    turnInProgress = true; //turnInProgress controls the current turn, if it's set to true, the current turn is skipped as it's only set true from playing/Combining cards
                 }
 
                 yield return new WaitUntil(() => turnInProgress);//Wait until a card has been played if turn not skipped for other reasons, setting it to false after this wait will reset the wait condition for the next turn

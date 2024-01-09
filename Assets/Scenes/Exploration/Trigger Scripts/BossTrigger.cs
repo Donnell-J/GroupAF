@@ -30,7 +30,8 @@ public class BossTrigger : MonoBehaviour
         }
         if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
             //MovingScenes.instance.setCameraRotation(Quaternion.Euler(camRotation));
-            MovingScenes.instance.nextLevelStartPos(nextPos);
+            //MovingScenes.instance.nextLevelStartPos(nextPos);
+            MovingScenes.instance.setPreCombatPosition(Vector3.zero);
             cardDB.instance.nextLevelSave();
             MovingScenes.instance.setFromScene("Level2");
             SceneManager.LoadScene(nextScene);

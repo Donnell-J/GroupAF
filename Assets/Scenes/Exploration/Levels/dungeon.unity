@@ -4669,8 +4669,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractScene, Assembly-CSharp
+      - m_Target: {fileID: 1709137608}
+        m_TargetAssemblyTypeName: InteractSceneSwitch, Assembly-CSharp
         m_MethodName: ButtonNoClicked
         m_Mode: 1
         m_Arguments:
@@ -12806,7 +12806,7 @@ RectTransform:
   - {fileID: 618366718}
   - {fileID: 163963391}
   - {fileID: 61289972}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1709137609}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -19409,8 +19409,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractScene, Assembly-CSharp
+      - m_Target: {fileID: 1709137608}
+        m_TargetAssemblyTypeName: InteractSceneSwitch, Assembly-CSharp
         m_MethodName: ButtonYesClicked
         m_Mode: 1
         m_Arguments:
@@ -34864,7 +34864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startCombatMenu: {fileID: 1479227767}
-  player: {fileID: 0}
+  player: {fileID: 345524797}
   openMenu: 0
   encounterList:
   - {fileID: 4251401874852624592, guid: b155d8163f26f174e9d5027c21ba6158, type: 3}
@@ -36829,8 +36829,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractScene, Assembly-CSharp
+      - m_Target: {fileID: 1114318328}
+        m_TargetAssemblyTypeName: BossTrigger, Assembly-CSharp
         m_MethodName: ButtonNoClicked
         m_Mode: 1
         m_Arguments:
@@ -54072,7 +54072,7 @@ MonoBehaviour:
   - {fileID: 4251401874852624592, guid: b155d8163f26f174e9d5027c21ba6158, type: 3}
   - {fileID: 4251401874852624592, guid: afa2b992d1dec7d4883ebe3cb28aefab, type: 3}
   - {fileID: 4251401874852624592, guid: 7f96a8e24ce510b48918bfb4c3b5002e, type: 3}
-  enemyCount: 2
+  enemyCount: 4
   item: Soul In A Bottle
   itemMenu: {fileID: 3336762243808872108}
   battleName: Level 3 BS
@@ -54089,6 +54089,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 413266759}
   - {fileID: 1748176976}
   - {fileID: 1592734475}
   m_Father: {fileID: 0}
@@ -57941,8 +57942,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InteractScene, Assembly-CSharp
+      - m_Target: {fileID: 1114318328}
+        m_TargetAssemblyTypeName: BossTrigger, Assembly-CSharp
         m_MethodName: ButtonYesClicked
         m_Mode: 1
         m_Arguments:
@@ -67574,7 +67575,6 @@ SceneRoots:
   - {fileID: 1709137609}
   - {fileID: 853729975}
   - {fileID: 336473053}
-  - {fileID: 413266759}
   - {fileID: 1114318325}
   - {fileID: 1539260231}
   - {fileID: 3336762243808872107}

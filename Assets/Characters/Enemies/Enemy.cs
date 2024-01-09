@@ -137,6 +137,8 @@ public class Enemy : MonoBehaviour, IcombatFunction{
     
 
     public void forceAction(int action){
+        vfxPlayer.Reinit();
+        vfxPlayer.SendEvent("OnDebuff");
         intent = (Action) action;
         intentValue = Random.Range(actionStrengths[(int)intent], Mathf.RoundToInt(actionStrengths[(int)intent] * 1.5f));
         intentionIcon.setIntentIcon((int) intent, intentValue, findTargetName());

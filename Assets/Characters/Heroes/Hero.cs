@@ -168,6 +168,8 @@ public class Hero : MonoBehaviour, IcombatFunction
         return;
     }
     public void removeNegativeStatuses(){
+        vfxPlayer.Reinit();
+        vfxPlayer.SendEvent("OnHeal");
         List<string> keys = new List<string>(statuses.Keys);
         foreach(string key in keys){
             if(key.Equals("poison")|key.Equals("weakened")|key.Equals("vulnerable")){
