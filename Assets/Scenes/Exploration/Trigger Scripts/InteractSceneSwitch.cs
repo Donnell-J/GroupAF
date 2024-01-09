@@ -20,8 +20,10 @@ public class InteractSceneSwitch : MonoBehaviour
             startCombatMenu.SetActive(false); //Hide it's screen overlay until necessary 
             openMenu = false;
         }
-        if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
+        if(MovingScenes.instance.getTriggeredCombats()[MovingScenes.instance.getTriggeredCombats().Count-1] == gameObject){
             itemMenu.showItemMenu(item);
+        }
+        if (MovingScenes.instance.getTriggeredCombats().Contains(gameObject)){ //If this obj has the same name as object thatr previously started combat, destroy it
             Destroy(this);
         }
     }
@@ -30,7 +32,7 @@ public class InteractSceneSwitch : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if(Vector3.Distance(player.position,transform.position) <= 30){
+            if(Vector3.Distance(player.position,transform.position) <= 10){
                 Debug.Log(openMenu);
                 startCombatMenu.SetActive(true);//Show overlay if clicked on and player is close enough
                 openMenu = true;
@@ -50,7 +52,7 @@ public class InteractSceneSwitch : MonoBehaviour
         MovingScenes.instance.setEnemyList(eList);
         MovingScenes.instance.setFromScene(SceneManager.GetActiveScene().name);
         MovingScenes.instance.setPreCombatPosition(player.position); //Load relevant data into singleton, switch to battle scene
-        MovingScenes.instance.setCombatTrigger(name);
+        MovingScenes.instance.setCombatTrigger(gameObject);
         SceneManager.LoadScene(battleName);
     }
     public void ButtonNoClicked()

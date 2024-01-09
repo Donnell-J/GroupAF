@@ -13,7 +13,7 @@ public class MovingScenes: MonoBehaviour{
 
     private Boolean combatSuccess;
     private string fromScene;
-    private List<string> triggeredCombats;
+    private List<GameObject> triggeredCombats;
     // singeleton
 
      void Awake()
@@ -23,7 +23,7 @@ public class MovingScenes: MonoBehaviour{
         if (instance == null)
         {
             instance = this;
-            triggeredCombats = new List<string>();
+            triggeredCombats = new List<GameObject>();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -63,10 +63,10 @@ public class MovingScenes: MonoBehaviour{
         this.combatSuccess = combatSuccess;
     }
     
-    public void setCombatTrigger(string name){
-        this.triggeredCombats.Add(name);
+    public void setCombatTrigger(GameObject obj){
+        this.triggeredCombats.Add(obj);
     }
-    public List<string> getTriggeredCombats(){
+    public List<GameObject> getTriggeredCombats(){
         return this.triggeredCombats;
     }
 

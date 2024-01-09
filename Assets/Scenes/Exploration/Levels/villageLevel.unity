@@ -36122,6 +36122,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2621137693508927185, guid: 153c256dc04d41542b75e8d8975d9aa6, type: 3}
+      propertyPath: m_Value
+      value: 0.502
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621137693508927185, guid: 153c256dc04d41542b75e8d8975d9aa6, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4205558263810122998, guid: 153c256dc04d41542b75e8d8975d9aa6, type: 3}
       propertyPath: m_Name
       value: Menus

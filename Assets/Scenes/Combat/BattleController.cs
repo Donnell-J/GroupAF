@@ -38,6 +38,8 @@ public class BattleController : MonoBehaviour
         randomizeTurnOrder(); //randomize turn order for each combat so that it's not too repetetive
         party = new List<Hero>();
         enemies = new List<Enemy>();
+        turnIndex = 0;
+        
         populateSides(); //Instanciate all necessary hero/enemy objects and scripts to populate party and enemies lists
         cardView.initialise();
         StartCoroutine(Combat()); //Coroutine so that the function can wait until the player takes their turn for each hero
