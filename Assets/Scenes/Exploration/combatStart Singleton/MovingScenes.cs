@@ -23,7 +23,7 @@ public class MovingScenes: MonoBehaviour{
         if (instance == null)
         {
             instance = this;
-            triggeredCombats = new List<string>();
+            resetTriggers();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -92,5 +92,7 @@ public class MovingScenes: MonoBehaviour{
     }
     public void resetTriggers(){
         this.triggeredCombats = new List<string>();
+        this.triggeredCombats.Add("----");
+
     }
 }
