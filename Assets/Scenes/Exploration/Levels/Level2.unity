@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16007265, g: 0.5168968, b: 1.04459, a: 1}
+  m_IndirectSpecularColor: {r: 0.15896621, g: 0.51753515, b: 1.0392404, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -70973,7 +70973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5859383501793175824, guid: a3fec50789772d9439a2dc7cd17385f5, type: 3}
       propertyPath: m_AngularSpeed
-      value: 27.1
+      value: 270
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -89887,6 +89887,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard(Ally2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8167610922670790249, guid: 4573337b69a708e499279edfa0f2f4c5, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167610922670790249, guid: 4573337b69a708e499279edfa0f2f4c5, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 270
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -89904,6 +89912,10 @@ PrefabInstance:
       propertyPath: mTarget
       value: 
       objectReference: {fileID: 1678364841}
+    - target: {fileID: 1900713823226361977, guid: 0d80ef0e437cd3049812b689c345e5fa, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 270
+      objectReference: {fileID: 0}
     - target: {fileID: 2032717796119397110, guid: 0d80ef0e437cd3049812b689c345e5fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.13
@@ -90012,6 +90024,14 @@ PrefabInstance:
     - target: {fileID: 5721306155089902827, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739034560442152578, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739034560442152578, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 5912117109167725502, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
       propertyPath: m_Name
