@@ -22,7 +22,7 @@ public class cardDB : MonoBehaviour {
 
     void Awake(){
         startSingleton();
-        ;
+        
     }
     
     void startSingleton(){ //Ensures that only one singleton exists at a time
@@ -84,10 +84,7 @@ public class cardDB : MonoBehaviour {
 
     public void loadSaveState(){
         for(int i = 0; i < 4; i++){  
-            Debug.Log(i);
             heroDecks[i] = checkPointHeroDecks[i];
-            Debug.Log("saved: " + savedHeroMaxHPs[i].ToString());
-            Debug.Log("cur: " + heroMaxHPs[i].ToString());
         }
         heroMaxHPs = savedHeroMaxHPs;
         keyCount =0;

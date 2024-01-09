@@ -16,6 +16,7 @@ public class ItemMenu : MonoBehaviour
     public Sprite gemImg;
     public Sprite waterImg;
 
+    public GameObject menu;
     public TMP_Text title;
     public TMP_Text desc;
     void Start()
@@ -30,11 +31,11 @@ public class ItemMenu : MonoBehaviour
     }
 
     public void onClosePressed(){
-        gameObject.SetActive(false);
+        menu.SetActive(false);
     }
     public void showItemMenu(string item){
+        menu.SetActive(true);
         title.text = item;
-        gameObject.SetActive(true);
         if(item.Equals("First Gold Coin")){
             desc.text = "Ah the Captains first dabloon! He dug it up from far south with his crew back in '65. The dabloon's been in his pocket since the day he found it, how on earth did it fall out? The Captain believes that it's very lucky, maybe a few more dabloons will come flying your way!";
         }else if(item.Equals("Old Hook Hand")){

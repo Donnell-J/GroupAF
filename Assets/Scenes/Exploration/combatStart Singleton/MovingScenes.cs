@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MovingScenes: MonoBehaviour{
     public static MovingScenes instance; // static instance of the class that can be read by other scripts 
     public GameObject[] enemyList;
-    private Vector3 preCombatPosition;
+    private Vector3 preCombatPosition = Vector3.zero;
     private Quaternion levelDefaultCameraRotation;
 
     private Vector3 leveldefaultPosition;
