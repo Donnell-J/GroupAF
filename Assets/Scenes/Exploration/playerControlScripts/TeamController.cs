@@ -24,9 +24,10 @@ public class TeamController : MonoBehaviour
         if ((transform.position - mTarget.position).magnitude > EPSILON)
         {
             transform.Translate(0.0f, 0.0f, (mSpeed * Time.deltaTime));
+            anim.SetFloat("Velocity",1f);
         }else{
+            anim.SetFloat("Velocity",0f);
         }
 
-        anim.SetFloat("Velocity",agent.velocity.magnitude);
     }
 }

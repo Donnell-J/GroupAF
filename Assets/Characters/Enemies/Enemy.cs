@@ -282,7 +282,7 @@ public class Enemy : MonoBehaviour, IcombatFunction{
             if(shield < 0){
                 currentHP +=shield;
                 shield = 0;
-                hpBar.setShield(0);
+            hpBar.setShield(shield);
         }
         }
         if(currentHP <= 0){
@@ -300,9 +300,8 @@ public class Enemy : MonoBehaviour, IcombatFunction{
         hpBar.setShield(shield);
     }
     public void die(){//removes enemy from list of active enemies and rotates it to show its dead
-    animPlayer.SetTrigger("playDead");
+        animPlayer.SetTrigger("playDead");
         BattleController.enemies.Remove(this);
-        transform.eulerAngles = new Vector3(0,0,90);
         transform.GetChild(0).gameObject.SetActive(false);
         isDead = true;
     }
