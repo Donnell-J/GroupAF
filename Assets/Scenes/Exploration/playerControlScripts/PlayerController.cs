@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
     {
         
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        transform.position = MovingScenes.instance.getPreCombatPosition();
+        if(MovingScenes.instance.getPreCombatPosition() != null){
+            transform.position = MovingScenes.instance.getPreCombatPosition();
+        }
         
         
 

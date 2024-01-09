@@ -20,7 +20,7 @@ public class InteractSceneSwitch : MonoBehaviour
             startCombatMenu.SetActive(false); //Hide it's screen overlay until necessary 
             openMenu = false;
         }
-        if(MovingScenes.instance.getTriggeredCombats()[-1].Equals(name)){
+        if(MovingScenes.instance.getTriggeredCombats().Last().Equals(name)){
             itemMenu.showItemMenu(item);
         }
         if (MovingScenes.instance.getTriggeredCombats().Contains(name)){ //If this obj has the same name as object thatr previously started combat, destroy it
