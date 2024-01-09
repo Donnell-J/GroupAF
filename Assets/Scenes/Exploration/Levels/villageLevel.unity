@@ -9849,6 +9849,18 @@ PrefabInstance:
       propertyPath: mTarget
       value: 
       objectReference: {fileID: 539130906}
+    - target: {fileID: 1900713823226361977, guid: 0d80ef0e437cd3049812b689c345e5fa, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900713823226361977, guid: 0d80ef0e437cd3049812b689c345e5fa, type: 3}
+      propertyPath: m_Acceleration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900713823226361977, guid: 0d80ef0e437cd3049812b689c345e5fa, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 27.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2032717796119397110, guid: 0d80ef0e437cd3049812b689c345e5fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.89911
@@ -12687,6 +12699,18 @@ PrefabInstance:
     - target: {fileID: 3369463998991456470, guid: a3fec50789772d9439a2dc7cd17385f5, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5859383501793175824, guid: a3fec50789772d9439a2dc7cd17385f5, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5859383501793175824, guid: a3fec50789772d9439a2dc7cd17385f5, type: 3}
+      propertyPath: m_Acceleration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5859383501793175824, guid: a3fec50789772d9439a2dc7cd17385f5, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 27.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42591,6 +42615,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard(Ally2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8167610922670790249, guid: 4573337b69a708e499279edfa0f2f4c5, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167610922670790249, guid: 4573337b69a708e499279edfa0f2f4c5, type: 3}
+      propertyPath: m_Acceleration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167610922670790249, guid: 4573337b69a708e499279edfa0f2f4c5, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 27.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43487,6 +43523,18 @@ PrefabInstance:
     - target: {fileID: 5721306155089902827, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739034560442152578, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739034560442152578, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
+      propertyPath: m_Acceleration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739034560442152578, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 27.1
       objectReference: {fileID: 0}
     - target: {fileID: 5912117109167725502, guid: a395bb51bee87c9469f92d2b75f3ae15, type: 3}
       propertyPath: m_Name
